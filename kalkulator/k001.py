@@ -1,9 +1,9 @@
 # 1. Kalkulator tekstowy
 # Napisz prosty kalkulator, który wykonuje podstawowe działania matematyczne, takie jak dodawanie, odejmowanie, mnożenie i dzielenie.
 
-##################
-### WERSJA_1.0 ###
-##################
+#############
+### _k001 ###
+#############
 
 a = float(input("Podaj A: "))
 b = float(input("Podaj B: "))
@@ -29,3 +29,5 @@ else:
 	print ("Nie dzielimy przez 0 !")
 
 print ("Potega wynosi: ", a ** b)
+
+# > <= < = == != not 2 == 3
