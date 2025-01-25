@@ -9,9 +9,7 @@ Opis: Napisz prosty kalkulator, który wykonuje podstawowe działania matematycz
 Czego się nauczysz:
 
 Operacje matematyczne
-
 Obsługa wejścia użytkownika (input)
-
 Instrukcje warunkowe (if-else)
 
 
@@ -23,9 +21,7 @@ Opis: Użytkownik zgaduje liczbę wylosowaną przez program w określonym zakres
 Czego się nauczysz:
 
 Generowanie losowych liczb (random.randint)
-
 Pętle (while)
-
 Obsługa wyjątków (np. błędne dane wejściowe)
 
 
@@ -37,9 +33,7 @@ Opis: Stwórz aplikację do zarządzania zadaniami, która pozwala użytkownikow
 Czego się nauczysz:
 
 Praca z listami
-
 Pętle i funkcje
-
 Podstawy zarządzania danymi w prostym formacie (np. zapis do pliku tekstowego)
 
 
@@ -51,9 +45,7 @@ Opis: Napisz program, który analizuje tekst wprowadzony przez użytkownika, lic
 Czego się nauczysz:
 
 Operacje na ciągach znaków (str)
-
 Praca z modułem collections (np. Counter)
-
 Obsługa plików tekstowych
 
 
@@ -65,7 +57,5 @@ Opis: Stwórz bota, który odpowiada na podstawowe pytania użytkownika (np. "Ja
 Czego się nauczysz:
 
 Instrukcje warunkowe (if-elif-else)
-
 Przetwarzanie danych wejściowych użytkownika
-
 Sposoby implementacji prostych algorytmów odpowiedzi
