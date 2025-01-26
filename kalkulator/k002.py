@@ -12,17 +12,17 @@
 
 # Wpisz liczbe lub polecenie:
 #   [3, 4, 6]
-#>> suma
-#>> roznica
-#>> iloczyn
-#>> iloraz
+# >> suma
+# >> roznica
+# >> iloczyn
+# >> iloraz
 ### break
 
+liczby = [10, 7, 2]
 
-liczby = ['12.0', '6.0', '1.0']
 
 while True:
-	print ('>> suma')
+	print ('>> suma') # mozna uzyc jednego print print("""\  """)
 	print ('>> roznica')
 	print ('>> iloczyn')
 	print ('>> iloraz')
@@ -33,7 +33,9 @@ while True:
 		print (f'Suma wynosi: {sum(liczby)}')
 		break
 	elif user_input == 'roznica':
-		print ('ROZNICA')
+		n=0
+		wynik = liczby[n] - sum(liczby[n+1:])
+		print (wynik)
 		break
 	elif user_input == 'iloczyn':
 		print ('ILOCZYN')
@@ -49,4 +51,3 @@ while True:
 
 
 # if user_input.lower() == 'suma': # .lower() ???
-# liczby.append(input())
