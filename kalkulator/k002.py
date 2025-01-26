@@ -4,49 +4,47 @@
 ### k002 ###
 ############
 
-### Ta wersja ma wykonywac konkretne obliczenia na polecenie
-# pobierz x danych i zapisz
-# gdy sum, min, iloraz itd wykonaj obliczenia i zwroc wynik
-# first in first out
-# gdy break to break
+# Ta wersja ma wykonywac konkretne obliczenia na polecenie
+# - pobierz x danych i zapisz
+# - gdy sum, min, iloraz itd wykonaj obliczenia i zwroc wynik
+# - first in first out
+# - gdy break to break
 
-#5
-
-#[3, 4, 6]
+# Wpisz liczbe lub polecenie:
+# [3, 4, 6]
 #- suma
 #- roznica
 #- iloczyn
 #- iloraz
-## break
+### break
 
-user_input = [3]
+
+liczby = []
 
 while True:
-	print ('suma')
-	print ('roznica')
-	print ('iloczyn')
-	print ('iloraz')
-	print ('break')
-	print (user_input)
-	user_input = input("Podaj liczbe lub oblicz: ")
-	if user_input.lower() == 'suma':
-		user_input.append()
+	print ('>> suma')
+	print ('>> roznica')
+	print ('>> iloczyn')
+	print ('>> iloraz')
+	print ('## break')
+	print (liczby)
+	user_input = input("Wpisz liczbe lub polecenie: ")
+	if user_input == 'suma':
+		print ('Suma wynosi: ')
+	elif user_input == 'roznica':
+		print ('ROZNICA')
+	elif user_input == 'iloczyn':
+		print ('ILOCZYN')
+	elif user_input == 'iloraz':
+                print ('ILORAZ')
+	else:
+		liczby.append(float(user_input))
 
 
 
 
 
-
-
-
-
-
-#if user_input.lower() == 'suma': # .lower() ???
-
-
-
-
-
-#	liczby.append(input())
+# if user_input.lower() == 'suma': # .lower() ???
+# liczby.append(input())
 
 
