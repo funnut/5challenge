@@ -1,10 +1,8 @@
 # Kalkulator tekstowy
 # Napisz prosty kalkulator, który wykonuje podstawowe działania matematyczne, takie jak dodawanie, odejmowanie, mnożenie i dzielenie.
 
-### k003 ###
-############
-
-# Ta wersja ma zapisywac i pobierac dane z pliku txt
+### k002s ###
+#############
 
 
 liczby = []
@@ -64,7 +62,3 @@ while True:
 			liczby.append(float(user_input))
 		except ValueError:
 			print ('Wpisano nieprawidlowa wartosc. Sprobuj ponownie!')
-
-
-
-# Czat dodał sprawdzenie czy lista jest pusta, wyjątek dla dzielenia przez zero i komunikat błędu od float
