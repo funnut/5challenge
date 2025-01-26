@@ -19,6 +19,7 @@
 ### break
 
 
+
 liczby = []
 
 while True:
@@ -50,5 +51,3 @@ while True:
 
 # if user_input.lower() == 'suma': # .lower() ???
 # liczby.append(input())
-
-
