@@ -1,4 +1,4 @@
-# 1. Kalkulator tekstowy
+# Kalkulator tekstowy
 # Napisz prosty kalkulator, który wykonuje podstawowe działania matematyczne, takie jak dodawanie, odejmowanie, mnożenie i dzielenie.
 
 ### k002 ###
@@ -11,16 +11,15 @@
 # - gdy break to break
 
 # Wpisz liczbe lub polecenie:
-# [3, 4, 6]
-#- suma
-#- roznica
-#- iloczyn
-#- iloraz
+#   [3, 4, 6]
+#>> suma
+#>> roznica
+#>> iloczyn
+#>> iloraz
 ### break
 
 
-
-liczby = []
+liczby = ['12.0', '6.0', '1.0']
 
 while True:
 	print ('>> suma')
