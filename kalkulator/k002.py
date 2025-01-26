@@ -30,13 +30,17 @@ while True:
 	print (liczby)
 	user_input = input("Wpisz liczbe lub polecenie: ")
 	if user_input == 'suma':
-		print ('Suma wynosi: ')
+		print (f'Suma wynosi: {sum(liczby)}')
+		break
 	elif user_input == 'roznica':
 		print ('ROZNICA')
+		break
 	elif user_input == 'iloczyn':
 		print ('ILOCZYN')
+		break
 	elif user_input == 'iloraz':
-                print ('ILORAZ')
+		print ('ILORAZ')
+		break
 	else:
 		liczby.append(float(user_input))
 
