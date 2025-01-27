@@ -17,16 +17,17 @@
 import funk
 losowa = 91
 
-print ("\n\nPodaj nazwe gracza: ")
+print ("\n\nPodaj nazwę gracza: ")
 username = input().strip()   # strip usuwa spacje
-print (f"\n>>> Witaj {username}! <<<\nWlasnie jedna z liczb w przedziale od 0 do 100 sie zgubila...\nCzy potrafisz ja odnalezc?\nPodaj jaka to liczba: ")
+print (f"\n>>> Witaj {username}! <<<\nWłasnie jedna z liczb w przedziale od 0 do 100 się zgubiła...\nCzy potrafisz ją odnaleźć?\nPodaj, jaka to liczba: ")
 
+# Główna pętla
 while True:
 	try:
 		strzal = int(input())
 		odleglosc = funk.sprawdz_odleglosc(losowa, strzal)
 
-		if odleglosc:
+		if odleglosc: # Komentarz do odległości
 			print (funk.komentator(odleglosc))
 		else:
 			print (f"Strzal w dziesiatke!\nChodzilo o liczbe {losowa}!")
