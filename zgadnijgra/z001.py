@@ -13,9 +13,9 @@
 
 ### Generator losowych liczb
 ### Funkcja sprawdzajaca "odleglosc" inputu (wartosci bezwzgledne)
-
+import random
 import funk
-losowa = 91
+losowa = random.randrange(1, 100)
 
 print ("\n\nPodaj nazwę gracza: ")
 username = input().strip()   # strip usuwa spacje
