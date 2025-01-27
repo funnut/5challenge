@@ -29,10 +29,9 @@ while True:
 		if odleglosc:
 			print (funk.komentator(odleglosc))
 		else:
-			print (f"Strzal w dziesiatke!\nChodzilo o liczbe > {losowa} <")
-			kontynuuj = input ("Kontynuuj? y/n ")
-			if kontynuuj.lower() == 'n':
-				break
+			print ("Strzal w dziesiatke!")
+			print (f"Chodzilo o liczbe {losowa}!")
+			break
 
 	except ValueError:
 		print ("Szukamy liczby calkowitej!")
