@@ -8,7 +8,6 @@
 # Witaj!
 #   1. Rozpocznij gre
 #   2. Wyjdz z gry
-#
 
 # Podaj login
 
@@ -16,9 +15,7 @@
 ### Funkcja sprawdzajaca "odleglosc" inputu (wartosci bezwzgledne)
 
 import funk
-
 losowa = 91
-
 
 print ("Podaj nazwe gracza: ")
 username = str(input())
@@ -32,8 +29,10 @@ while True:
 		if odleglosc:
 			print (funk.komentator(odleglosc))
 		else:
-			print (f"Strzal w dziesiatke!\nChodzilo o liczbe {losowa}")
-			break
+			print (f"Strzal w dziesiatke!\nChodzilo o liczbe > {losowa} <")
+			kontynuuj = input ("Kontynuuj? y/n ")
+			if kontynuuj.lower() == 'n':
+				break
 
 	except ValueError:
 		print ("Szukamy liczby calkowitej!")
