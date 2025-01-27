@@ -19,7 +19,11 @@ losowa = random.randrange(1, 100)
 
 print ("\n\nPodaj nazwę gracza: ")
 username = input().strip()   # strip usuwa spacje
-print (f"\n>>> Witaj {username}! <<<\nWłasnie jedna z liczb w przedziale od 0 do 100 się zgubiła...\nCzy potrafisz ją odnaleźć?\nPodaj, jaka to liczba: ")
+print (f"""
+>>> Witaj {username}! <<<
+Własnie jedna z liczb w przedziale od 0 do 100 się zgubiła...
+Czy potrafisz ją odnaleźć?
+Podaj, jaka to liczba:""")
 
 # Główna pętla
 while True:
