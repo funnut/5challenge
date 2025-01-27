@@ -17,9 +17,9 @@
 import funk
 losowa = 91
 
-print ("Podaj nazwe gracza: ")
-username = str(input())
-print (f"Witaj {username}!\nWlasnie jedna z liczb w przedziale od 0 do 100 sie zgubila...\nCzy potrafisz ja odnalezc?\nPodaj jaka to liczba: ")
+print ("\n\nPodaj nazwe gracza: ")
+username = input().strip()   # strip usuwa spacje
+print (f"\n>>> Witaj {username}! <<<\nWlasnie jedna z liczb w przedziale od 0 do 100 sie zgubila...\nCzy potrafisz ja odnalezc?\nPodaj jaka to liczba: ")
 
 while True:
 	try:
@@ -29,8 +29,7 @@ while True:
 		if odleglosc:
 			print (funk.komentator(odleglosc))
 		else:
-			print ("Strzal w dziesiatke!")
-			print (f"Chodzilo o liczbe {losowa}!")
+			print (f"Strzal w dziesiatke!\nChodzilo o liczbe {losowa}!")
 			break
 
 	except ValueError:
