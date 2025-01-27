@@ -41,3 +41,5 @@ def glowna_funkcja (a):  # moze (a, b) ?
 
 user_input = input().strip().lower()
 glowna_funkcja(sprawdz_input(user_input))
+
+#
