@@ -10,16 +10,16 @@
 
 # ostatnio dodane, id, data dodania, status
 
-print ("\n\n# Witaj w l001!\n# add / del / show")
+print ("\n\n >> Witaj w l001!\n >> add / del / show")
 
-def sprawdz_input(user_input):
-	if user_input == 'add':
+def sprawdz_input(usr_input):
+	if usr_input == 'add':
 		komenda = 'add'
 		return komenda
-	elif user_input == 'del':
+	elif usr_input == 'del':
 		komenda = 'del'
 		return komenda
-	elif user_input == 'show':
+	elif usr_input == 'show':
 		komenda = 'show'
 		return komenda
 	else:
@@ -27,19 +27,23 @@ def sprawdz_input(user_input):
 		return komenda
 
 
-def glowna_funkcja (a):  # moze (a, b) ?
+def glowna_funkcja (a):  # moze (a, b) ? dystrybutor
 	if a == 'add':
+		a, b = input().split()
+		print (a, b)
 		print ("glowna_funkcja add")
 	elif a == 'del':
 		print ("glowna_funkcja del")
 	elif a == 'show':
 		dane = open('workfile.txt', 'r', encoding="utf-8")
-		print (dane.readlines()) # wartosc w nawiasie to ilosc lini
+		print (dane.read()) # wartosc w nawiasie to ilosc lini
 		print ("glowna_funkcja show")
 	elif a == 'error':
 		print ("nieprawidlowe polecenie!")
 
-user_input = input().strip().lower()
-glowna_funkcja(sprawdz_input(user_input))
+usr_input = input().strip().lower()
+glowna_funkcja(sprawdz_input(usr_input))
 
-#
+
+# show -all
+# show -3
