@@ -13,8 +13,10 @@
 
 ### Generator losowych liczb
 ### Funkcja sprawdzajaca "odleglosc" inputu (wartosci bezwzgledne)
+
 import random
 import funk
+
 losowa = random.randrange(1, 100)
 
 print ("\n\nPodaj nazwę gracza: ")
@@ -28,10 +30,9 @@ Podaj, jaka to liczba:""")
 # Główna pętla
 while True:
 	try:
-		strzal = int(input())
 		odleglosc = funk.sprawdz_odleglosc(losowa, strzal)
-
-		if odleglosc: # Komentarz do odległości
+		strzal = int(input())
+		if odleglosc: 	# Komentarz do odległości
 			print (funk.komentator(odleglosc))
 		else:
 			print (f"Strzal w dziesiatke!\nChodzilo o liczbe {losowa}!")
@@ -39,3 +40,5 @@ while True:
 
 	except ValueError:
 		print ("Szukamy liczby calkowitej!")
+
+
