@@ -9,41 +9,42 @@
 # >>
 
 # ostatnio dodane, id, data dodania, status
+import shlex
+import funky
 
-print ("\n\n >> Witaj w l001!\n >> add / del / show")
+print ("\n\nWitaj w l001!")
 
-def sprawdz_input(usr_input):
-	if usr_input == 'add':
-		komenda = 'add'
-		return komenda
-	elif usr_input == 'del':
-		komenda = 'del'
-		return komenda
-	elif usr_input == 'show':
-		komenda = 'show'
-		return komenda
+def glowna_funkcja (polecenie):
+
+	if polecenie == 'add': # ADD
+		NOTKA = input("Wpisz notatke: ").strip()
+		print ("_DONE_")
+		print ("## glowna funkcja add")
+		pobierz_input()
+	elif polecenie == 'del': # DEL
+		DEL_ID = input("Podaj id: ").strip().lower()
+		print ("_DONE_")
+		print ("## glowna funkcja del")
+		pobierz_input()
+	elif polecenie == 'show': # SHOW
+		print ("""\nshow [a] - pokazuje a ostatnich notatek
+show - pokazuje 5 ostatnich notatek
+show all - pokazuje wszystkie notatki""")
+		print ("## glowna funkcja show")
+		pobierz_input()
+	elif polecenie == 'menu':
+		pobierz_input()
+	elif polecenie in ['end', 'exit', 'quit', 'q']:
+		print ("### program end ###")
 	else:
-		komenda = 'error'
-		return komenda
+		print ("### nieprawidlowe polecenie! ###")
+		print ("polecenie: ",polecenie)
+		pobierz_input()
 
+def pobierz_input():
+	print ("add / del / show")
+	usr_input = shlex.split(input(">> ").strip().lower())
+	glowna_funkcja(funky.sprawdz_input(usr_input))
 
-def glowna_funkcja (a):  # moze (a, b) ? dystrybutor
-	if a == 'add':
-		a, b = input().split()
-		print (a, b)
-		print ("glowna_funkcja add")
-	elif a == 'del':
-		print ("glowna_funkcja del")
-	elif a == 'show':
-		dane = open('workfile.txt', 'r', encoding="utf-8")
-		print (dane.read()) # wartosc w nawiasie to ilosc lini
-		print ("glowna_funkcja show")
-	elif a == 'error':
-		print ("nieprawidlowe polecenie!")
+pobierz_input()
 
-usr_input = input().strip().lower()
-glowna_funkcja(sprawdz_input(usr_input))
-
-
-# show -all
-# show -3
