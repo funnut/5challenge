@@ -9,5 +9,8 @@ def sprawdz_input(usr_input):
 		polecenie = usr_input[0], usr_input[1]
 		return polecenie
 	else:
-		return False
+		polecenie = 'max_two_items_array'
+		return polecenie
 
+def cleanup():
+	print ("\n\n\n"*15)
