@@ -8,6 +8,8 @@ def sprawdz_input(usr_input):
 	elif len(usr_input) == 2:
 		polecenie = usr_input[0], usr_input[1]
 		return polecenie
+	elif len(usr_input) == 0:
+		return 'add'
 	else:
 		polecenie = 'max_two_items_array'
 		return polecenie

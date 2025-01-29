@@ -6,28 +6,32 @@
 
 # Witaj w l001!
 # add / del / show
-# >>
-
+# >
 # ostatnio dodane, id, data dodania, status
+
+from random import randrange
 import shlex
 import funky
-from random import randrange
+
 
 print (f"\n\n\nWitaj w lisku!\n{randrange(0,1000)} <- q <- h")
 
-def glowna_funkcja (polecenie):
 
+def glowna_funkcja (polecenie):
 	if polecenie == 'add': # ADD
-		NOTKA = input("Wpisz notatke: ").strip()
-		print ("_DONE_")
-		print ("### notatka zapisana")
-		pobierz_input()
+		NOTKA = str(input("Wpisz notatke: ").strip())
+		print(NOTKA)
+		if len(NOTKA) != 0:
+			print ("_DONE_\n### notatka zapisana")
+			pobierz_input()
+		else:
+			pobierz_input()
 	elif polecenie[0] == 'add' and polecenie[1]:
 		print ("_DONE_\n### notatka zapisana")
 		pobierz_input()
 			###
 	elif polecenie == 'del': # DEL
-		DEL_ID = input("Podaj id: ").strip().lower()
+		DEL_ID = input("Wpisz id: ").strip().lower()
 		print ("_DONE_")
 		print ("### notatka usunieta")
 		pobierz_input()
@@ -36,10 +40,9 @@ def glowna_funkcja (polecenie):
 		pobierz_input()
 			###
 	elif polecenie in ['show', 's']: # SHOW
-		print ("List 5 last")
 		pobierz_input()
 	elif polecenie[0] in ['show', 's'] and polecenie[1] == 'all':
-		print ("show all")
+		print (read_data)
 		pobierz_input()
 	elif polecenie in ['show', 's'] and int(polecenie[1]):
 		print ("show [a]")
@@ -61,9 +64,14 @@ def glowna_funkcja (polecenie):
 		print ("var ",polecenie)
 		pobierz_input()
 
+
 def pobierz_input():
 	print ("add / del / show")
 	usr_input = shlex.split(input(">> ").strip().lower())
 	glowna_funkcja(funky.sprawdz_input(usr_input))
 
+with open('dane.txt', 'r', encoding="utf-8") as DANE:
+	read_data = DANE.read()
+
 pobierz_input()
+

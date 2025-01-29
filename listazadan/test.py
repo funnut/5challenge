@@ -1,0 +1,5 @@
+
+
+notka = input("notka: ")
+input ('>> ')
+
