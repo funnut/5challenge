@@ -54,7 +54,7 @@ def glowna_funkcja (polecenie):
 	elif polecenie in ['help', 'h', 'menu', 'info', 'commands']:
 		print ("\n\nLisek is a free and OpenSource notes app for your terminal\nEnter q for quit\ncls for screen cleanup\nshow or s <- showing last 5 notes\nshow [t] <- showing t number of notes\nshow all <- listing all notes\ndel id035 <- deliting a specific note\ndel all <- deleting all notes")
 		pobierz_input()
-	elif polecenie in ['hey', 'hi', 'hello']:
+	elif polecenie in ['hey', 'hi', 'hello', 'welcome','yo']
 		print ("\nNice having you here!\nShall we start?")
 		pobierz_input()
 	elif polecenie in ['end', 'exit', 'quit', 'q']:
