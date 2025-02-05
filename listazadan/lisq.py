@@ -14,7 +14,7 @@ import shlex
 import funky
 
 
-print (f"\n\n\nWitaj w lisku!\n{randrange(0,1000)} <- q <- h")
+print (f"\nWitaj w lisqu!\n{randrange(0,1000)} <- q <- h")
 
 
 def glowna_funkcja (polecenie):
@@ -53,7 +53,7 @@ def glowna_funkcja (polecenie):
 		funky.cleanup()
 		pobierz_input()
 	elif polecenie in ['help', 'h', 'menu', 'info', 'commands']:
-		print ("\n\nLisek is a free and OpenSource notes app for your terminal\nEnter q for quit\ncls for screen cleanup\nshow or s <- showing last 5 notes\nshow [t] <- showing t number of notes\nshow all <- listing all notes\ndel id035 <- deliting a specific note\ndel all <- deleting all notes")
+		print ("\n©liseq is a free and OpenSource notes app for you\n:: enter q for quit\n:: cls for screen cleanup\n:: show or s <- showing last 10 notes\n:: show [t] <- showing t number of notes\n:: show all <- listing all notes\n:: del 035 <- deliting a specific note\n:: del l <- deliting last note\n:: del all <- deleting all notes")
 		pobierz_input()
 	elif polecenie in ['hey', 'hi', 'hello', 'welcome','yo']:
 		print ("\nNice having you here!\nShall we start?")
@@ -76,3 +76,5 @@ with open('dane.txt', 'r', encoding="utf-8") as DANE:
 
 pobierz_input()
 
+# id_nr =
+# data_nr =
