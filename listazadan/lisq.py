@@ -18,7 +18,8 @@ print (f"\nWitaj w lisqu!\n{randrange(0,1000)} <- q <- h")
 
 
 def glowna_funkcja (polecenie):
-	if polecenie == 'add': # ADD
+			### ADD
+	if polecenie == 'add':
 		NOTKA = str(input("Wpisz notatke: ").strip())
 		if len(NOTKA) != 0:
 			print ("works")
@@ -28,8 +29,8 @@ def glowna_funkcja (polecenie):
 	elif polecenie[0] == 'add' and polecenie[1]:
 		print ("_DONE_\n### notatka zapisana")
 		pobierz_input()
-			###
-	elif polecenie == 'del': # DEL
+			### DELETE
+	elif polecenie == 'del':
 		DEL_ID = input("Wpisz id: ").strip().lower()
 		print ("_DONE_")
 		print ("### notatka usunieta")
@@ -37,8 +38,8 @@ def glowna_funkcja (polecenie):
 	elif polecenie[0] == 'del' and polecenie[1]:
 		print ("_DONE_\n### notatka usunieta")
 		pobierz_input()
-			###
-	elif polecenie in ['show', 's']: # SHOW
+			### SHOW
+	elif polecenie in ['show', 's']:
 		for line in read_data[-5:]:
 			print (line, end='')
 		pobierz_input()
@@ -71,7 +72,7 @@ def pobierz_input():
 	usr_input = shlex.split(input(">> ").strip().lower())
 	glowna_funkcja(funky.sprawdz_input(usr_input))
 
-with open('dane.txt', 'r', encoding="utf-8") as DANE:
+with open('/data/data/com.termux/files/home/kod/5challenge/listazadan/dane.txt', 'r', encoding="utf-8") as DANE:
 	read_data = DANE.read()
 
 pobierz_input()
