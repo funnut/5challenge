@@ -21,9 +21,9 @@ print (f"\nWitaj w lisqu!\n{randrange(0,1000)} -> quit -> help")
 def glowna_funkcja (polecenie):
 			### ADD
 	if polecenie == 'add':
-		notatka_ = str(input("Wpisz notatke: ").strip())
-		if len(notatka_) != 0:
-			write_file(notatka_)
+		notatka = str(input("Wpisz notatke: "))
+		if len(notatka) != 0:
+			write_file(notatka)
 		else:
 			pobierz_input()
 	elif polecenie[0] == 'add' and polecenie[1]:
@@ -38,15 +38,12 @@ def glowna_funkcja (polecenie):
 		pobierz_input()
 			### SHOW
 	elif polecenie in ['show', 's']:
-		for line in read_data[-5:]:
-			print (line, end='')
-		pobierz_input()
+		read_file('last')
 	elif polecenie[0] in ['show', 's'] and polecenie[1] == 'all':
-		read_file()
-		pobierz_input()
-	elif polecenie in ['show', 's'] and int(polecenie[1]):
-		print ("show [a]")
-		pobierz_input()
+		read_file('all')
+	elif polecenie[0] in ['show', 's'] and polecenie[1].isdigit():
+		print(polecenie)
+		read_file(polecenie[1])
 			###
 	elif polecenie in ['cls', 'clear']:
 		funky.cleanup()
@@ -70,10 +67,24 @@ def pobierz_input():
 	usr_input = shlex.split(input(">> ").strip())
 	glowna_funkcja(funky.sprawdz_input(usr_input))
 
-def read_file():
-	with open('/data/data/com.termux/files/home/kod/5challenge/listazadan/dane.txt', 'r', encoding="utf-8") as DANE:
-		read_all = DANE.read()
-		print ('\n' + read_all)
+def read_file(a):
+	if a=='all':
+		print ("\nid      data")
+		with open('/data/data/com.termux/files/home/kod/5challenge/listazadan/dane.txt', 'r', encoding="utf-8") as DANE:
+			read_all = DANE.read()
+			print (read_all)
+		pobierz_input()
+	elif a=='last':
+		print ("\nid      data")
+		with open('dane.txt', 'r', encoding='utf-8') as plik:
+			ostatnie = plik.readlines()
+			for i in ostatnie[-10:]:
+				print (i.strip())
+			print('')
+		pobierz_input()
+	elif a.isdigit():
+		print (f"\npokaz [{a}] numer notatek")
+		pobierz_input()
 
 def write_file(a):
 	id_ = 1 # niech id bedzie zawsze poprzedni nr id + 1 # stworz zmienna ktoa bedzie poprzednie id
@@ -84,6 +95,3 @@ def write_file(a):
 	pobierz_input()
 
 pobierz_input()
-
-# id_nr =
-# data_nr =
