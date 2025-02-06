@@ -30,7 +30,8 @@ def glowna_funkcja (polecenie):
 		write_file(polecenie[1])
 			### DELETE
 	elif polecenie == 'del':
-		DEL_ID = input("Wpisz id: ").strip().lower()
+		id_str = input("Wpisz id: ").strip().lower()
+		delete(id_str)
 		print ("_DONE_\n### notatka usunieta")
 		pobierz_input()
 	elif polecenie[0] == 'del' and polecenie[1]:
@@ -95,6 +96,15 @@ def write_file(a):
 	with open('dane.txt', 'a', encoding='utf-8') as file:
 		file.write(f"{id_} {data_} {a}\n")
 		print('_done_\n### notatka zapisana')
+	pobierz_input()
+
+def delete(id_str):
+	with open('dane.txt', "r", encoding="utf-8") as plik:
+		linie = plik.readlines()
+		nowe_linie = [linia for linia in linie if id_str not in linia]
+	with open('dane.txt', "w", encoding="utf-8") as plik:
+		plik.writelines(nowe_linie)
+		print(f"Usunięto linie zawierające '{id_str}'.")
 	pobierz_input()
 
 pobierz_input()

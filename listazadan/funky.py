@@ -16,3 +16,4 @@ def sprawdz_input(usr_input):
 
 def cleanup():
 	print ("\n\n\n"*15)
+
