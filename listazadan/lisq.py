@@ -84,14 +84,29 @@ def read_file(a):
 			print('')
 	pobierz_input()
 
-def write_file(a):
-	id_ = 1 # niech id bedzie zawsze poprzedni nr id + 1 # stworz zmienna ktoa bedzie poprzednie id
-	data_ = datetime.now().strftime("%Y/%m/%d")
-	with open('dane.txt', 'a', encoding='utf-8') as file:
-		file.write(f"{id_} {data_} | {a}\n")
-		print('_done_\n### notatka zapisana')
-	pobierz_input()
+from datetime import datetime
 
+def write_file(a):
+	try:
+		with open('dane.txt', 'r', encoding='utf-8') as file:
+			lines = file.readlines()
+		if lines:
+			last_line = lines[-1]
+			last_id = int(last_line.split()[0][2:])  # Extract the numeric part of the ID (after 'id')
+			id_ = last_id + 1
+		else:
+			id_ = 1
+	except FileNotFoundError:
+		id_ = 1
+
+	formatted_id = f"id{str(id_).zfill(3)}"
+	data_ = datetime.now().strftime("%Y/%m/%d")
+
+	with open('dane.txt', 'a', encoding='utf-8') as file:
+		file.write(f"{formatted_id} {data_} | {a}\n")
+
+	print('Notatka została dodana.')
+	pobierz_input()
 
 def delete(id_str):
 	with open('dane.txt', "r", encoding="utf-8") as plik:
