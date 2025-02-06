@@ -41,7 +41,7 @@ def glowna_funkcja(polecenie):
         print("\n>> liseq is a free and OpenSource notes app for you <<\n"
               ": quit, q, exit\n"
               ": cls, clear - screen cleanup\n"
-              ": show, s - show last 10 notes\n"
+              ": show, s - show last set notes (default: 15)\n"
               ": show [N] - show N notes\n"
               ": show all - show all notes\n"
               ": del [id] - delete a note containing [id]\n"
@@ -150,7 +150,7 @@ def delete(arg):
 def pobierz_input():
     """Pobiera polecenie użytkownika w trybie interaktywnym."""
     while True:
-        print(":: add / del / show ::")
+        print("-:: add / del / show ::-")
         usr_input = shlex.split(input(">> ").strip())
         glowna_funkcja(sprawdz_input(usr_input))
 
@@ -161,5 +161,12 @@ if __name__ == "__main__":
         sys.exit()
 
     readline.set_history_length(100)
-    print(f"\nWitaj w lisqu!\n{randrange(0,1000)} -> quit -> help")
+    print(fr"""
+ _ _
+| (_)___  __ _
+| | / __|/ _` |
+| | \__ \ (_| |
+|_|_|___/\__, |WELCOME
+quit - help |_|{randrange(0,1000)}""")
+#    print(f"\n{randrange(0,1000)} -> quit -> help")
     pobierz_input()
