@@ -1,13 +1,13 @@
 # Lista zadań (To-Do List)
 # Stwórz aplikację do zarządzania zadaniami, która pozwala użytkownikowi dodawać, usuwać i wyświetlać zadania.
 
-### l001 ###
-############
+### _lisq_ ###
+############## by funnut
 
 import sys
 import shlex
-import shutil
-import readline # historia polecen
+import shutil # szerokość terminalu
+import readline # historia poleceń
 from datetime import datetime
 from random import randrange
 
