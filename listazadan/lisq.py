@@ -12,9 +12,8 @@
 from datetime import datetime
 from random import randrange
 import shlex
+import sys
 
-print ("\nWitaj w lisqu!"
-	f"\n{randrange(0,1000)} -> quit -> help")
 
 def glowna_funkcja(polecenie):
 	cmd, arg = polecenie  # Rozpakowanie tuple
@@ -37,7 +36,7 @@ def glowna_funkcja(polecenie):
 		return pobierz_input()
 	### CLEAR SCREEN
 	elif cmd in ['cls', 'clear']:
-		cleanup()
+		print("\n" * 50)
 		return pobierz_input()
 	### HELP
 	elif cmd in ['help', 'h']:
@@ -54,7 +53,7 @@ def glowna_funkcja(polecenie):
 	### EXIT
 	elif cmd in ['quit', 'q', 'exit']:
 		print("Zamknięcie programu.")
-		exit()
+		sys.exit()
 	### INVALID COMMAND
 	print("### Nieprawidłowe polecenie! ###")
 	print("var", polecenie)
@@ -67,14 +66,6 @@ def sprawdz_input(usr_input):
 		return (usr_input[0].lower(), None)
 	else:
 		return (usr_input[0].lower(), usr_input[1])
-
-def cleanup():
-	print("\n" * 50)  # Skuteczniejsze czyszczenie ekranu
-
-def pobierz_input():
-	print (":: add / del / show ::")
-	usr_input = shlex.split(input(">> ").strip())
-	glowna_funkcja(sprawdz_input(usr_input))
 
 def read_file(a):
 	print("\n___id _data _____________________________")
@@ -134,4 +125,20 @@ def delete(id_str):
 	else:
 		print("Nie znaleziono notatek do usunięcia.")
 
-pobierz_input()
+
+def pobierz_input():
+    while True:
+        print(":: add / del / show ::")
+        usr_input = shlex.split(input(">> ").strip())
+        glowna_funkcja(sprawdz_input(usr_input))
+
+if __name__ == "__main__":
+    if len(sys.argv) > 1:
+        # Jeśli przekazano argumenty, traktuj je jako notatkę do dodania
+        note = " ".join(sys.argv[1:])
+        write_file(note)
+        print(f"Notatka dodana: {note}")
+        sys.exit()  # <-- Program kończy działanie PO dodaniu notatki
+
+    print(f"\nWitaj w lisqu!\n{randrange(0,1000)} -> quit -> help")
+    pobierz_input()
