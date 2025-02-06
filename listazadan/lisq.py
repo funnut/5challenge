@@ -13,8 +13,8 @@ from random import randrange
 
 notesfilename = '/data/data/com.termux/files/home/lisq/notes.txt'
 
-def glowna_funkcja(polecenie):
-    cmd, arg = polecenie  # Rozpakowanie tuple
+def glowna_funkcja(command):
+    cmd, arg = command  # Rozpakowanie tuple
 ### ADD
     if cmd == 'add':
         if not arg:
@@ -45,14 +45,15 @@ def glowna_funkcja(polecenie):
 ### HELP
     elif cmd in ['help', 'h']:
         print("\n>> liseq is a free and OpenSource notes app for you <<\n"
-              ": quit, q, exit\n"
-              ": cls, clear - screen cleanup\n"
-              ": show, s - show last set notes (default: 15)\n"
-              ": show [N] - show N notes\n"
-              ": show all - show all notes\n"
-              ": del [id] - delete a note containing [id]\n"
-              ": del l - delete last note\n"
-              ": del all - delete all notes\n")
+            "Commands:\n"
+            ": quit, q, exit\n"
+            ": cls, clear   - clear screen\n"
+            ": show, s      - show the last set of notes (default: 15)\n"
+            ": show [N]     - show N notes\n"
+            ": show all     - show all notes\n"
+            ": del [id]     - delete a note containing [id]\n"
+            ": del L        - delete the last note\n"
+            ": del all      - delete all notes\n")
         return
 ### EXIT
     elif cmd in ['quit', 'q', 'exit']:
