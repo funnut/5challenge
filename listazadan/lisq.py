@@ -68,23 +68,22 @@ def pobierz_input():
 	glowna_funkcja(funky.sprawdz_input(usr_input))
 
 def read_file(a):
-	if a=='all':
-		print ("\nid      data")
-		with open('/data/data/com.termux/files/home/kod/5challenge/listazadan/dane.txt', 'r', encoding="utf-8") as DANE:
-			read_all = DANE.read()
+	with open('/data/data/com.termux/files/home/kod/5challenge/listazadan/dane.txt', 'r', encoding="utf-8") as plik:
+		if a=='all':
+			read_all = plik.read()
+			print ("\nid      data")
 			print (read_all)
-		pobierz_input()
-	elif a=='last':
-		print ("\nid      data")
-		with open('dane.txt', 'r', encoding='utf-8') as plik:
+			pobierz_input()
+		elif a=='last':
+			print ("\nid      data")
 			ostatnie = plik.readlines()
 			for i in ostatnie[-10:]:
 				print (i.strip())
 			print('')
-		pobierz_input()
-	elif a.isdigit():
-		print (f"\npokaz [{a}] numer notatek")
-		pobierz_input()
+			pobierz_input()
+		elif a.isdigit():
+			print (f"\npokaz [{a}] numer notatek")
+			pobierz_input()
 
 def write_file(a):
 	id_ = 1 # niech id bedzie zawsze poprzedni nr id + 1 # stworz zmienna ktoa bedzie poprzednie id
