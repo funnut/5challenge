@@ -49,7 +49,7 @@ def glowna_funkcja (polecenie):
 		funky.cleanup()
 		pobierz_input()
 	elif polecenie in ['help', 'h']:
-		print ("\n>> liseq is a free and OpenSource notes app for you <<\n:: enter q for quit\n:: cls for screen cleanup\n:: show or s <- showing last 10 notes\n:: show [t] <- showing t number of notes\n:: show all <- listing all notes\n:: del 035 <- deliting a specific note\n:: del l <- deliting last note\n:: del all <- deleting all notes\n")
+		print ("\n>> liseq is a free and OpenSource notes app for you <<\n:: enter q for quit\n:: cls for screen cleanup\n:: show or s <- showing last 10 notes\n:: show [N] <- showing N number of notes\n:: show all <- listing all notes\n:: del 035 <- deliting a specific note\n:: del l <- deliting last note\n:: del all <- deleting all notes\n")
 		pobierz_input()
 	elif polecenie in ['hey', 'hi', 'hello', 'welcome','yo']:
 		print ("\nNice having you here!\nShall we start?")
@@ -82,7 +82,11 @@ def read_file(a):
 			print('')
 			pobierz_input()
 		elif a.isdigit():
-			print (f"\npokaz [{a}] numer notatek")
+			print ("\nid      data")
+			N = int(a)
+			for i in (plik.readlines() [-N:]):
+				print (i.strip())
+			print('')
 			pobierz_input()
 
 def write_file(a):
