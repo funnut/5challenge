@@ -13,13 +13,11 @@ from datetime import datetime
 from random import randrange
 import shlex
 
-
-print (f"\nWitaj w lisqu!\n{randrange(0,1000)} -> quit -> help")
-
+print ("\nWitaj w lisqu!"
+	f"\n{randrange(0,1000)} -> quit -> help")
 
 def glowna_funkcja(polecenie):
 	cmd, arg = polecenie  # Rozpakowanie tuple
-
 	### ADD
 	if cmd == 'add':
 		if not arg:
@@ -27,24 +25,20 @@ def glowna_funkcja(polecenie):
 		if arg:
 			write_file(arg)
 		return pobierz_input()
-
 	### DELETE
 	elif cmd == 'del':
 		if not arg:
 			arg = input("Wpisz ID: ").strip().lower()
 		delete(arg)
 		return pobierz_input()
-
 	### SHOW
 	elif cmd in ['show', 's']:
 		read_file(arg if arg else 'last')
 		return pobierz_input()
-
 	### CLEAR SCREEN
 	elif cmd in ['cls', 'clear']:
 		cleanup()
 		return pobierz_input()
-
 	### HELP
 	elif cmd in ['help', 'h']:
 		print("\n>> liseq is a free and OpenSource notes app for you <<\n"
@@ -57,17 +51,14 @@ def glowna_funkcja(polecenie):
 			":: del l - delete last note\n"
 			":: del all - delete all notes\n")
 		return pobierz_input()
-
 	### EXIT
 	elif cmd in ['quit', 'q', 'exit']:
 		print("Zamknięcie programu.")
 		exit()
-
 	### INVALID COMMAND
 	print("### Nieprawidłowe polecenie! ###")
 	print("var", polecenie)
 	pobierz_input()
-
 
 def sprawdz_input(usr_input):
 	if not usr_input:
@@ -77,16 +68,13 @@ def sprawdz_input(usr_input):
 	else:
 		return (usr_input[0].lower(), usr_input[1])
 
-
 def cleanup():
 	print("\n" * 50)  # Skuteczniejsze czyszczenie ekranu
-
 
 def pobierz_input():
 	print (":: add / del / show ::")
 	usr_input = shlex.split(input(">> ").strip())
 	glowna_funkcja(sprawdz_input(usr_input))
-
 
 def read_file(a):
 	print("\n___id _data")
@@ -128,7 +116,6 @@ def write_file(a):
 		file.write(f"{formatted_id} {data_} {a}\n")
 	print('Notatka została dodana.')
 	pobierz_input()
-
 
 def delete(id_str):
 	with open('dane.txt', "r", encoding="utf-8") as plik:
