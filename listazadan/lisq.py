@@ -39,14 +39,14 @@ def glowna_funkcja(polecenie):
 ### HELP
     elif cmd in ['help', 'h']:
         print("\n>> liseq is a free and OpenSource notes app for you <<\n"
-              ":: q - quit\n"
-              ":: cls - screen cleanup\n"
-              ":: show / s - show last 10 notes\n"
-              ":: show [N] - show N notes\n"
-              ":: show all - show all notes\n"
-              ":: del [id] - delete a note\n"
-              ":: del l - delete last note\n"
-              ":: del all - delete all notes\n")
+              ": quit, q, exit\n"
+              ": cls, clear - screen cleanup\n"
+              ": show, s - show last 10 notes\n"
+              ": show [N] - show N notes\n"
+              ": show all - show all notes\n"
+              ": del [id] - delete a note containing [id]\n"
+              ": del l - delete last note\n"
+              ": del all - delete all notes\n")
         return
 ### EXIT
     elif cmd in ['quit', 'q', 'exit']:
@@ -106,23 +106,46 @@ def write_file(a):
         file.write(f"{formatted_id} {data_} {a}\n")
     print(f'Notatka została dodana: {a}')
 
-def delete(id_str):
-    """Usuwa notatki na podstawie podanego ID."""
+def delete(arg):
+    """Usuwa notatki na podstawie podanego argumentu:
+    - 'id' (np. '123') - usuwa notatki zawierające identyfikator,
+    - 'l' - usuwa ostatnią notatkę,
+    - 'all' - usuwa wszystkie notatki.
+    """
     with open(notesfilename, "r", encoding="utf-8") as plik:
-        linie = plik.readlines()  # Read all lines from the file
-        nowe_linie = [linia for linia in linie if id_str not in linia]  # Filter out the lines containing id_str
-
-    numer = len(linie) - len(nowe_linie)  # Calculate how many lines were removed
-    if numer > 0:
-        yesno = input(f"Czy usunąć {numer} notatki? (y/n): ")
+        linie = plik.readlines()
+    if arg == "all":
+        yesno = input("Czy na pewno chcesz usunąć wszystkie notatki? (y/n): ")
         if yesno.lower() == 'y':
-            with open(notesfilename, "w", encoding="utf-8") as plik:
-                plik.writelines(nowe_linie)  # Write the remaining lines back to the file
-            print(f"Usunięto {numer} notatki zawierające identyfikator {id_str}.")
+            open(notesfilename, "w", encoding="utf-8").close()  # Czyścimy plik
+            print("Wszystkie notatki zostały usunięte.")
         else:
             print("Operacja anulowana.")
+    elif arg == "l":
+        if linie:
+            yesno = input("Czy na pewno chcesz usunąć ostatnią notatkę? (y/n): ")
+            if yesno.lower() == 'y':
+                with open(notesfilename, "w", encoding="utf-8") as plik:
+                    plik.writelines(linie[:-1])  # Zapisujemy plik bez ostatniej linii
+                print("Ostatnia notatka została usunięta.")
+            else:
+                print("Operacja anulowana.")
+        else:
+            print("Brak notatek do usunięcia.")
     else:
-        print("Nie znaleziono notatek do usunięcia.")
+        nowe_linie = [linia for linia in linie if arg not in linia]
+        numer = len(linie) - len(nowe_linie)
+
+        if numer > 0:
+            yesno = input(f"Czy usunąć {numer} notatki zawierające identyfikator {arg}? (y/n): ")
+            if yesno.lower() == 'y':
+                with open(notesfilename, "w", encoding="utf-8") as plik:
+                    plik.writelines(nowe_linie)
+                print(f"Usunięto {numer} notatki zawierające identyfikator {arg}.")
+            else:
+                print("Operacja anulowana.")
+        else:
+            print("Nie znaleziono notatek do usunięcia.")
 
 def pobierz_input():
     """Pobiera polecenie użytkownika w trybie interaktywnym."""

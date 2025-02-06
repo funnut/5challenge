@@ -15,5 +15,5 @@ i014 2025/02/06 nowa notatka
 i015 2025/02/06 nowa notatka b b b
 i017 2025/02/06 a jeszcze jedna notatke sobie dodam
 i018 2025/02/06 jeszcze to
-i019 2025/02/06 nowe
 i020 2025/02/06 zmiana formatu id
+i021 2025/02/06 dodanie del last i all
