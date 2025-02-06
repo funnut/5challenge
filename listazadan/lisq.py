@@ -67,24 +67,42 @@ def pobierz_input():
 	glowna_funkcja(funky.sprawdz_input(usr_input))
 
 def read_file(a):
-	print ("\n___id ______data")
-	with open('/data/data/com.termux/files/home/kod/5challenge/listazadan/dane.txt', 'r', encoding="utf-8") as plik:
-		if a=='all':
-			read_all = plik.read()
-			print (read_all)
-		elif a=='last':
-			ostatnie = plik.readlines()
-			for i in ostatnie[-10:]:
-				print (i.strip())
-			print('')
-		elif a.isdigit():
-			N = int(a)
-			for i in (plik.readlines() [-N:]):
-				print (i.strip())
-			print('')
+	print("\n___id _data")
+	try:
+		with open('dane.txt', 'r', encoding='utf-8') as plik:
+			if a == 'all':
+				wszystkie = plik.readlines()
+				for i in wszystkie:
+					# Split the date and remove the year part (YYYY/MM/DD -> MM/DD)
+					parts = i.split()
+					date_parts = parts[1].split("/")  # Split the date at '/'
+					formatted_date = "/".join(date_parts[1:])  # Join MM and DD
+					print(f"{parts[0]} {formatted_date} {' '.join(parts[2:]).strip()}")
+				print('')
+			elif a == 'last':
+				ostatnie = plik.readlines()
+				for i in ostatnie[-10:]:
+					# Split the date and remove the year part (YYYY/MM/DD -> MM/DD)
+					parts = i.split()
+					date_parts = parts[1].split("/")  # Split the date at '/'
+					formatted_date = "/".join(date_parts[1:])  # Join MM and DD
+					print(f"{parts[0]} {formatted_date} {' '.join(parts[2:]).strip()}")
+				print('')
+			elif a.isdigit():
+				N = int(a)
+				ostatnie = plik.readlines()
+				for i in ostatnie[-N:]:
+					# Split the date and remove the year part (YYYY/MM/DD -> MM/DD)
+					parts = i.split()
+					date_parts = parts[1].split("/")  # Split the date at '/'
+					formatted_date = "/".join(date_parts[1:])  # Join MM and DD
+					print(f"{parts[0]} {formatted_date} {' '.join(parts[2:]).strip()}")
+				print('')
+	except FileNotFoundError:
+		print("Plik nie został znaleziony!")
 	pobierz_input()
 
-from datetime import datetime
+
 
 def write_file(a):
 	try:
@@ -98,15 +116,13 @@ def write_file(a):
 			id_ = 1
 	except FileNotFoundError:
 		id_ = 1
-
 	formatted_id = f"id{str(id_).zfill(3)}"
 	data_ = datetime.now().strftime("%Y/%m/%d")
-
 	with open('dane.txt', 'a', encoding='utf-8') as file:
-		file.write(f"{formatted_id} {data_} | {a}\n")
-
+		file.write(f"{formatted_id} {data_} {a}\n")
 	print('Notatka została dodana.')
 	pobierz_input()
+
 
 def delete(id_str):
 	with open('dane.txt', "r", encoding="utf-8") as plik:
