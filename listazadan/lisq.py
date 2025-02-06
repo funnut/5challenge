@@ -15,28 +15,28 @@ notesfile = '/data/data/com.termux/files/home/lisq/notes.txt'
 
 def glowna_funkcja(polecenie):
     cmd, arg = polecenie  # Rozpakowanie tuple
-    ### ADD
+### ADD
     if cmd == 'add':
         if not arg:
             arg = input("Wpisz notatkę: ").strip()
         if arg:
             write_file(arg)
         return
-    ### DELETE
+### DELETE
     elif cmd == 'del':
         if not arg:
             arg = input("Wpisz ID: ").strip().lower()
         delete(arg)
         return
-    ### SHOW
+### SHOW
     elif cmd in ['show', 's']:
         read_file(arg if arg else 'last')
         return
-    ### CLEAR SCREEN
+### CLEAR SCREEN
     elif cmd in ['cls', 'clear']:
         print("\n" * 50)
         return
-    ### HELP
+### HELP
     elif cmd in ['help', 'h']:
         print("\n>> liseq is a free and OpenSource notes app for you <<\n"
               ":: q - quit\n"
@@ -48,11 +48,11 @@ def glowna_funkcja(polecenie):
               ":: del l - delete last note\n"
               ":: del all - delete all notes\n")
         return
-    ### EXIT
+### EXIT
     elif cmd in ['quit', 'q', 'exit']:
         print("Zamknięcie programu.")
         sys.exit()
-    ### INVALID COMMAND
+### INVALID COMMAND
     print("### Nieprawidłowe polecenie! ###")
 
 def sprawdz_input(usr_input):
