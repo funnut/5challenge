@@ -11,7 +11,7 @@ import readline # historia poleceń
 from datetime import datetime
 from random import randrange
 
-notesfile = '/data/data/com.termux/files/home/lisq/notes.txt'
+notesfilename = '/data/data/com.termux/files/home/lisq/notes.txt'
 
 def glowna_funkcja(polecenie):
     cmd, arg = polecenie  # Rozpakowanie tuple
@@ -67,14 +67,14 @@ def sprawdz_input(usr_input):
 def read_file(a):
     """Odczytuje plik i wyświetla notatki."""
     terminal_width = shutil.get_terminal_size().columns
-    print('\n___id _data','_' * (terminal_width-12))
+    print('\n__id _data','_' * (terminal_width-12))
     try:
-        with open(notesfile, 'r', encoding='utf-8') as plik:
+        with open(notesfilename, 'r', encoding='utf-8') as plik:
             linie = plik.readlines()
             if a == 'all':
                 do_wyswietlenia = linie
             elif a == 'last':
-                do_wyswietlenia = linie[-10:]
+                do_wyswietlenia = linie[-15:] # sets nr of lines shown by 'show'
             elif a.isdigit():
                 do_wyswietlenia = linie[-int(a):]
             else:
@@ -90,7 +90,7 @@ def read_file(a):
 def write_file(a):
     """Dodaje nową notatkę do pliku."""
     try:
-        with open(notesfile, 'r', encoding='utf-8') as file:
+        with open(notesfilename, 'r', encoding='utf-8') as file:
             lines = file.readlines()
         if lines:
             last_line = lines[-1]
@@ -100,15 +100,15 @@ def write_file(a):
             id_ = 1
     except FileNotFoundError:
         id_ = 1
-    formatted_id = f"id{str(id_).zfill(3)}"
+    formatted_id = f"i{str(id_).zfill(3)}"
     data_ = datetime.now().strftime("%Y/%m/%d")
-    with open(notesfile, 'a', encoding='utf-8') as file:
+    with open(notesfilename, 'a', encoding='utf-8') as file:
         file.write(f"{formatted_id} {data_} {a}\n")
     print(f'Notatka została dodana: {a}')
 
 def delete(id_str):
     """Usuwa notatki na podstawie podanego ID."""
-    with open(notesfile, "r", encoding="utf-8") as plik:
+    with open(notesfilename, "r", encoding="utf-8") as plik:
         linie = plik.readlines()  # Read all lines from the file
         nowe_linie = [linia for linia in linie if id_str not in linia]  # Filter out the lines containing id_str
 
@@ -116,7 +116,7 @@ def delete(id_str):
     if numer > 0:
         yesno = input(f"Czy usunąć {numer} notatki? (y/n): ")
         if yesno.lower() == 'y':
-            with open(notesfile, "w", encoding="utf-8") as plik:
+            with open(notesfilename, "w", encoding="utf-8") as plik:
                 plik.writelines(nowe_linie)  # Write the remaining lines back to the file
             print(f"Usunięto {numer} notatki zawierające identyfikator {id_str}.")
         else:
