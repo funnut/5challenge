@@ -9,13 +9,11 @@
 # >
 # ostatnio dodane, id, data dodania, status
 
-from random import randrange
 from datetime import datetime
+from random import randrange
 import shlex
 import funky
 
-id_ = 1 # niech id bedzie zawsze poprzedni nr id + 1 # stworz zmienna ktoa bedzie poprzednie id
-data_ = datetime.now().strftime("%Y/%m/%d")
 
 print (f"\nWitaj w lisqu!\n{randrange(0,1000)} -> quit -> help")
 
@@ -25,17 +23,11 @@ def glowna_funkcja (polecenie):
 	if polecenie == 'add':
 		notatka_ = str(input("Wpisz notatke: ").strip())
 		if len(notatka_) != 0:
-			with open('dane.txt', 'a', encoding='utf-8') as notatki:
-				notatki.write(f"{id_} {data_} {notatka_}\n")
-				print('_done_\n### notatka zapisana')
-			pobierz_input()
+			write_file(notatka_)
 		else:
 			pobierz_input()
 	elif polecenie[0] == 'add' and polecenie[1]:
-		with open('dane.txt', 'a', encoding='utf-8') as notatki:
-			notatki.write(f"{id_} {data_} {polecenie[1]}\n")
-			print ("_done_\n### notatka zapisana")
-		pobierz_input()
+		write_file(polecenie[1])
 			### DELETE
 	elif polecenie == 'del':
 		DEL_ID = input("Wpisz id: ").strip().lower()
@@ -65,7 +57,7 @@ def glowna_funkcja (polecenie):
 	elif polecenie in ['hey', 'hi', 'hello', 'welcome','yo']:
 		print ("\nNice having you here!\nShall we start?")
 		pobierz_input()
-	elif polecenie in ['quit', 'q']:
+	elif polecenie in ['quit', 'q', 'exit']:
 		print ("### program_end ###")
 	else:
 		print ("### nieprawidlowe_polecenie! ###")
@@ -75,13 +67,21 @@ def glowna_funkcja (polecenie):
 
 def pobierz_input():
 	print ("add / del / show")
-	usr_input = shlex.split(input(">> ").strip().lower())
+	usr_input = shlex.split(input(">> ").strip())
 	glowna_funkcja(funky.sprawdz_input(usr_input))
 
 def read_file():
 	with open('/data/data/com.termux/files/home/kod/5challenge/listazadan/dane.txt', 'r', encoding="utf-8") as DANE:
 		read_all = DANE.read()
 		print ('\n' + read_all)
+
+def write_file(a):
+	id_ = 1 # niech id bedzie zawsze poprzedni nr id + 1 # stworz zmienna ktoa bedzie poprzednie id
+	data_ = datetime.now().strftime("%Y/%m/%d")
+	with open('dane.txt', 'a', encoding='utf-8') as file:
+		file.write(f"{id_} {data_} {a}\n")
+		print('_done_\n### notatka zapisana')
+	pobierz_input()
 
 pobierz_input()
 
