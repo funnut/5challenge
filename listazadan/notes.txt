@@ -6,14 +6,3 @@ i005 2025/02/05 $PREFIX $HOME
 i006 2025/02/05 BACKING UP: tar -zcf /sdcard/termux-backup.tar.gz -C /data/data/com.termux/files ./home ./usr
 i007 2025/02/05 DODAJE KARTE SD: ln -s /storage/0000-709B sdcard
 i008 2025/02/05 mv storage/shared/youtube/*m4a storage/shared/Music
-i009 2025/02/06 hello world
-i010 2025/02/06 nowa
-i011 2025/02/06 nowa notatka
-i012 2025/02/06 notatka z terminalu
-i013 2025/02/06 szybka notatka z terminalu
-i014 2025/02/06 nowa notatka
-i015 2025/02/06 nowa notatka b b b
-i017 2025/02/06 a jeszcze jedna notatke sobie dodam
-i018 2025/02/06 jeszcze to
-i020 2025/02/06 zmiana formatu id
-i021 2025/02/06 dodanie del last i all

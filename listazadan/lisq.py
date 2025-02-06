@@ -19,6 +19,9 @@ def glowna_funkcja(polecenie):
     if cmd == 'add':
         if not arg:
             arg = input("Wpisz notatkę: ").strip()
+            if not arg:
+                print ("Anulowano dodawanie – nie podano treści notatki.")
+                return
         if arg:
             write_file(arg)
         return
@@ -26,6 +29,9 @@ def glowna_funkcja(polecenie):
     elif cmd == 'del':
         if not arg:
             arg = input("Wpisz ID: ").strip().lower()
+            if not arg:
+                print("Anulowano usuwanie – nie podano ID.")
+                return
         delete(arg)
         return
 ### SHOW
