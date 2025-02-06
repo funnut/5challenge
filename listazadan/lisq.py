@@ -77,7 +77,7 @@ def pobierz_input():
 	glowna_funkcja(sprawdz_input(usr_input))
 
 def read_file(a):
-	print("\n___id _data")
+	print("\n___id _data _____________________________")
 	try:
 		with open('dane.txt', 'r', encoding='utf-8') as plik:
 			linie = plik.readlines()
