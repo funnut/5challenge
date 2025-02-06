@@ -54,7 +54,8 @@ def glowna_funkcja (polecenie):
 		print ("\nNice having you here!\nShall we start?")
 		pobierz_input()
 	elif polecenie in ['quit', 'q', 'exit']:
-		print ("### program_end ###")
+		print ("Zamkniecie programu.")
+		exit()
 	else:
 		print ("### nieprawidlowe_polecenie! ###")
 		print ("var ",polecenie)
@@ -62,47 +63,32 @@ def glowna_funkcja (polecenie):
 
 
 def pobierz_input():
-	print ("add / del / show")
+	print (":: add / del / show ::")
 	usr_input = shlex.split(input(">> ").strip())
 	glowna_funkcja(funky.sprawdz_input(usr_input))
+
 
 def read_file(a):
 	print("\n___id _data")
 	try:
 		with open('dane.txt', 'r', encoding='utf-8') as plik:
+			linie = plik.readlines()
 			if a == 'all':
-				wszystkie = plik.readlines()
-				for i in wszystkie:
-					# Split the date and remove the year part (YYYY/MM/DD -> MM/DD)
-					parts = i.split()
-					date_parts = parts[1].split("/")  # Split the date at '/'
-					formatted_date = "/".join(date_parts[1:])  # Join MM and DD
-					print(f"{parts[0]} {formatted_date} {' '.join(parts[2:]).strip()}")
-				print('')
+				do_wyswietlenia = linie
 			elif a == 'last':
-				ostatnie = plik.readlines()
-				for i in ostatnie[-10:]:
-					# Split the date and remove the year part (YYYY/MM/DD -> MM/DD)
-					parts = i.split()
-					date_parts = parts[1].split("/")  # Split the date at '/'
-					formatted_date = "/".join(date_parts[1:])  # Join MM and DD
-					print(f"{parts[0]} {formatted_date} {' '.join(parts[2:]).strip()}")
-				print('')
+				do_wyswietlenia = linie[-10:]
 			elif a.isdigit():
-				N = int(a)
-				ostatnie = plik.readlines()
-				for i in ostatnie[-N:]:
-					# Split the date and remove the year part (YYYY/MM/DD -> MM/DD)
-					parts = i.split()
-					date_parts = parts[1].split("/")  # Split the date at '/'
-					formatted_date = "/".join(date_parts[1:])  # Join MM and DD
-					print(f"{parts[0]} {formatted_date} {' '.join(parts[2:]).strip()}")
-				print('')
+				do_wyswietlenia = linie[-int(a):]
+			else:
+				return print("Niepoprawny parametr!\n")
+			for linia in do_wyswietlenia:
+				parts = linia.split()
+				formatted_date = "/".join(parts[1].split("/")[1:])  # Usunięcie roku
+				print(f"{parts[0]} {formatted_date} {' '.join(parts[2:]).strip()}")
+			print('')
 	except FileNotFoundError:
 		print("Plik nie został znaleziony!")
 	pobierz_input()
-
-
 
 def write_file(a):
 	try:
