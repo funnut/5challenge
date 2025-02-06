@@ -10,9 +10,12 @@
 # ostatnio dodane, id, data dodania, status
 
 from random import randrange
+from datetime import datetime
 import shlex
 import funky
 
+id_ = 1 # niech id bedzie zawsze poprzedni nr id + 1 # stworz zmienna ktoa bedzie poprzednie id
+data_ = datetime.now().strftime("%Y/%m/%d")
 
 print (f"\nWitaj w lisqu!\n{randrange(0,1000)} <- q <- h")
 
@@ -20,9 +23,11 @@ print (f"\nWitaj w lisqu!\n{randrange(0,1000)} <- q <- h")
 def glowna_funkcja (polecenie):
 			### ADD
 	if polecenie == 'add':
-		NOTKA = str(input("Wpisz notatke: ").strip())
-		if len(NOTKA) != 0:
-			print ("works")
+		notatka_ = str(input("Wpisz notatke: ").strip())
+		if len(notatka_) != 0:
+			with open('dane.txt', 'a', encoding='utf-8') as notatki:
+				notatki.write(f"{id_} {data_} {notatka_}\n")
+				print('_done_\n')
 			pobierz_input()
 		else:
 			pobierz_input()
@@ -44,7 +49,7 @@ def glowna_funkcja (polecenie):
 			print (line, end='')
 		pobierz_input()
 	elif polecenie[0] in ['show', 's'] and polecenie[1] == 'all':
-		print (read_data)
+		read_file()
 		pobierz_input()
 	elif polecenie in ['show', 's'] and int(polecenie[1]):
 		print ("show [a]")
@@ -72,8 +77,10 @@ def pobierz_input():
 	usr_input = shlex.split(input(">> ").strip().lower())
 	glowna_funkcja(funky.sprawdz_input(usr_input))
 
-with open('/data/data/com.termux/files/home/kod/5challenge/listazadan/dane.txt', 'r', encoding="utf-8") as DANE:
-	read_data = DANE.read()
+def read_file():
+	with open('/data/data/com.termux/files/home/kod/5challenge/listazadan/dane.txt', 'r', encoding="utf-8") as DANE:
+		read_all = DANE.read()
+		print (read_all)
 
 pobierz_input()
 
