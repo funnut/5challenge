@@ -32,10 +32,9 @@ def glowna_funkcja (polecenie):
 	elif polecenie == 'del':
 		id_str = input("Wpisz id: ").strip().lower()
 		delete(id_str)
-		print ("_DONE_\n### notatka usunieta")
 		pobierz_input()
 	elif polecenie[0] == 'del' and polecenie[1]:
-		print ("_DONE_\n### notatka usunieta")
+		delete(polecenie[1])
 		pobierz_input()
 			### SHOW
 	elif polecenie in ['show', 's']:
@@ -43,7 +42,6 @@ def glowna_funkcja (polecenie):
 	elif polecenie[0] in ['show', 's'] and polecenie[1] == 'all':
 		read_file('all')
 	elif polecenie[0] in ['show', 's'] and polecenie[1].isdigit():
-		print(polecenie)
 		read_file(polecenie[1])
 			###
 	elif polecenie in ['cls', 'clear']:
@@ -69,42 +67,47 @@ def pobierz_input():
 	glowna_funkcja(funky.sprawdz_input(usr_input))
 
 def read_file(a):
+	print ("\n___id ______data")
 	with open('/data/data/com.termux/files/home/kod/5challenge/listazadan/dane.txt', 'r', encoding="utf-8") as plik:
 		if a=='all':
 			read_all = plik.read()
-			print ("\nid      data")
 			print (read_all)
-			pobierz_input()
 		elif a=='last':
-			print ("\nid      data")
 			ostatnie = plik.readlines()
 			for i in ostatnie[-10:]:
 				print (i.strip())
 			print('')
-			pobierz_input()
 		elif a.isdigit():
-			print ("\nid      data")
 			N = int(a)
 			for i in (plik.readlines() [-N:]):
 				print (i.strip())
 			print('')
-			pobierz_input()
+	pobierz_input()
 
 def write_file(a):
 	id_ = 1 # niech id bedzie zawsze poprzedni nr id + 1 # stworz zmienna ktoa bedzie poprzednie id
 	data_ = datetime.now().strftime("%Y/%m/%d")
 	with open('dane.txt', 'a', encoding='utf-8') as file:
-		file.write(f"{id_} {data_} {a}\n")
+		file.write(f"{id_} {data_} | {a}\n")
 		print('_done_\n### notatka zapisana')
 	pobierz_input()
 
+
 def delete(id_str):
 	with open('dane.txt', "r", encoding="utf-8") as plik:
-		linie = plik.readlines()
-		nowe_linie = [linia for linia in linie if id_str not in linia]
-	with open('dane.txt', "w", encoding="utf-8") as plik:
-		plik.writelines(nowe_linie)
-		print(f"Usunięto linie zawierające '{id_str}'.")
-	pobierz_input()
+		linie = plik.readlines()  # Read all lines from the file
+		nowe_linie = [linia for linia in linie if id_str not in linia]  # Filter out the lines containing id_str
+
+	numer = len(linie) - len(nowe_linie)  # Calculate how many lines were removed
+	if numer > 0:
+		yesno = input(f"Czy usunąć {numer} notatki? (y/n): ")
+		if yesno == 'y':
+			with open('dane.txt', "w", encoding="utf-8") as plik:
+				plik.writelines(nowe_linie)  # Write the remaining lines back to the file
+			print(f"Usunięto {numer} notatki zawierające identyfikator {id_str}.")
+		else:
+			print("Operacja anulowana.")
+	else:
+		print("Nie znaleziono notatek do usunięcia.")
 
 pobierz_input()
