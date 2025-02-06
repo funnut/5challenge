@@ -17,7 +17,7 @@ import funky
 id_ = 1 # niech id bedzie zawsze poprzedni nr id + 1 # stworz zmienna ktoa bedzie poprzednie id
 data_ = datetime.now().strftime("%Y/%m/%d")
 
-print (f"\nWitaj w lisqu!\n{randrange(0,1000)} <- q <- h")
+print (f"\nWitaj w lisqu!\n{randrange(0,1000)} -> quit -> help")
 
 
 def glowna_funkcja (polecenie):
@@ -27,18 +27,19 @@ def glowna_funkcja (polecenie):
 		if len(notatka_) != 0:
 			with open('dane.txt', 'a', encoding='utf-8') as notatki:
 				notatki.write(f"{id_} {data_} {notatka_}\n")
-				print('_done_\n')
+				print('_done_\n### notatka zapisana')
 			pobierz_input()
 		else:
 			pobierz_input()
 	elif polecenie[0] == 'add' and polecenie[1]:
-		print ("_DONE_\n### notatka zapisana")
+		with open('dane.txt', 'a', encoding='utf-8') as notatki:
+			notatki.write(f"{id_} {data_} {polecenie[1]}\n")
+			print ("_done_\n### notatka zapisana")
 		pobierz_input()
 			### DELETE
 	elif polecenie == 'del':
 		DEL_ID = input("Wpisz id: ").strip().lower()
-		print ("_DONE_")
-		print ("### notatka usunieta")
+		print ("_DONE_\n### notatka usunieta")
 		pobierz_input()
 	elif polecenie[0] == 'del' and polecenie[1]:
 		print ("_DONE_\n### notatka usunieta")
@@ -58,13 +59,13 @@ def glowna_funkcja (polecenie):
 	elif polecenie in ['cls', 'clear']:
 		funky.cleanup()
 		pobierz_input()
-	elif polecenie in ['help', 'h', 'menu', 'info', 'commands']:
-		print ("\n©liseq is a free and OpenSource notes app for you\n:: enter q for quit\n:: cls for screen cleanup\n:: show or s <- showing last 10 notes\n:: show [t] <- showing t number of notes\n:: show all <- listing all notes\n:: del 035 <- deliting a specific note\n:: del l <- deliting last note\n:: del all <- deleting all notes")
+	elif polecenie in ['help', 'h']:
+		print ("\n>> liseq is a free and OpenSource notes app for you <<\n:: enter q for quit\n:: cls for screen cleanup\n:: show or s <- showing last 10 notes\n:: show [t] <- showing t number of notes\n:: show all <- listing all notes\n:: del 035 <- deliting a specific note\n:: del l <- deliting last note\n:: del all <- deleting all notes\n")
 		pobierz_input()
 	elif polecenie in ['hey', 'hi', 'hello', 'welcome','yo']:
 		print ("\nNice having you here!\nShall we start?")
 		pobierz_input()
-	elif polecenie in ['end', 'exit', 'quit', 'q']:
+	elif polecenie in ['quit', 'q']:
 		print ("### program_end ###")
 	else:
 		print ("### nieprawidlowe_polecenie! ###")
@@ -80,7 +81,7 @@ def pobierz_input():
 def read_file():
 	with open('/data/data/com.termux/files/home/kod/5challenge/listazadan/dane.txt', 'r', encoding="utf-8") as DANE:
 		read_all = DANE.read()
-		print (read_all)
+		print ('\n' + read_all)
 
 pobierz_input()
 

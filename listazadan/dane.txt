@@ -7,10 +7,7 @@ _id ______data
 006 2025/02/05 BACKING UP: tar -zcf /sdcard/termux-backup.tar.gz -C /data/data/com.termux/files ./home ./usr
 007 2025/02/05 DODAJE KARTE SD: ln -s /storage/0000-709B sdcard
 008 2025/02/05 mv storage/shared/youtube/*m4a storage/shared/Music
-1 2025/02/06 notatka na pozniej
+1 2025/02/06 nowa notatka
 1 2025/02/06 notka
-1 2025/02/06 nkgvjygjutghjghjt
-1 2025/02/06 nowa
-1 2025/02/06 nowsza
-1 2025/02/06 nojgkkghjb
-1 2025/02/06 notka
+1 2025/02/06 nowa notatka
+1 2025/02/06 kolejna notatka
