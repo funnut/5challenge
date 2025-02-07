@@ -11,7 +11,7 @@ import readline # historia poleceń
 from datetime import datetime
 from random import randrange
 
-notesfilename = '/data/data/com.termux/files/home/lisq/notes.txt'
+notesfilename = '/data/data/com.termux/files/home/notes/notes.txt'
 
 def glowna_funkcja(command):
     cmd, arg = command  # Rozpakowanie tuple
@@ -74,7 +74,7 @@ def sprawdz_input(usr_input):
 def read_file(a):
     """Odczytuje plik i wyświetla notatki."""
     terminal_width = shutil.get_terminal_size().columns
-    print('\n__id _data','_' * (terminal_width-12))
+    print('\n _id _data','::','=' * (terminal_width-14))
     try:
         with open(notesfilename, 'r', encoding='utf-8') as plik:
             linie = plik.readlines()
@@ -110,7 +110,7 @@ def write_file(a):
     formatted_id = f"i{str(id_).zfill(3)}"
     data_ = datetime.now().strftime("%Y/%m/%d")
     with open(notesfilename, 'a', encoding='utf-8') as file:
-        file.write(f"{formatted_id} {data_} {a}\n")
+        file.write(f"{formatted_id} {data_} :: {a}\n")
     print(f'Notatka została dodana: {a}')
 
 def delete(arg):
@@ -157,7 +157,7 @@ def delete(arg):
 def pobierz_input():
     """Pobiera polecenie użytkownika w trybie interaktywnym."""
     while True:
-        print("-:: add / del / show ::-")
+        print("add / del / show")
         usr_input = shlex.split(input(">> ").strip())
         glowna_funkcja(sprawdz_input(usr_input))
 
