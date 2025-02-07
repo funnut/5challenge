@@ -88,7 +88,6 @@ def read_file(a):
             else:
                 znalezione = [linia for linia in linie if a.lower() in linia.lower()]
                 if znalezione:
-                    print (f"Znaleziono {len(znalezione)} pasujących elementów.")
                     do_wyswietlenia = znalezione
                 else:
                     return print("Nie znaleziono pasujących elementów!\n")
@@ -96,7 +95,7 @@ def read_file(a):
                 parts = linia.split()
                 formatted_date = "/".join(parts[1].split("/")[1:])  # Usunięcie roku
                 print(f"{parts[0]} {formatted_date} {' '.join(parts[2:]).strip()}")
-            print('')
+            print(f'\nZnaleziono {len(do_wyswietlenia)} pasujących elementów.')
     except FileNotFoundError:
         print("Plik nie został znaleziony!")
 
@@ -117,7 +116,7 @@ def write_file(a):
     data_ = datetime.now().strftime("%Y/%m/%d")
     with open(notesfilename, 'a', encoding='utf-8') as file:
         file.write(f"{formatted_id} {data_} :: {a}\n")
-    print(f'Notatka została dodana: {a}')
+    print(f'Notatka została dodana: {a}\n')
 
 def delete(arg):
     """Usuwa notatki na podstawie podanego argumentu:
@@ -131,20 +130,20 @@ def delete(arg):
         yesno = input("Czy na pewno chcesz usunąć wszystkie notatki? (y/n): ")
         if yesno.lower() == 'y':
             open(notesfilename, "w", encoding="utf-8").close()  # Czyścimy plik
-            print("Wszystkie notatki zostały usunięte.")
+            print("Wszystkie notatki zostały usunięte.\n")
         else:
-            print("Operacja anulowana.")
+            print("Operacja anulowana.\n")
     elif arg == "l":
         if linie:
             yesno = input("Czy na pewno chcesz usunąć ostatnią notatkę? (y/n): ")
             if yesno.lower() == 'y':
                 with open(notesfilename, "w", encoding="utf-8") as plik:
                     plik.writelines(linie[:-1])  # Zapisujemy plik bez ostatniej linii
-                print("Ostatnia notatka została usunięta.")
+                print("Ostatnia notatka została usunięta.\n")
             else:
-                print("Operacja anulowana.")
+                print("Operacja anulowana.\n")
         else:
-            print("Brak notatek do usunięcia.")
+            print("Brak notatek do usunięcia.\n")
     else:
         nowe_linie = [linia for linia in linie if arg not in linia]
         numer = len(linie) - len(nowe_linie)
@@ -154,11 +153,11 @@ def delete(arg):
             if yesno.lower() == 'y':
                 with open(notesfilename, "w", encoding="utf-8") as plik:
                     plik.writelines(nowe_linie)
-                print(f"Usunięto {numer} notatki zawierające identyfikator {arg}.")
+                print(f"Usunięto {numer} notatki zawierające identyfikator {arg}.\n")
             else:
-                print("Operacja anulowana.")
+                print("Operacja anulowana.\n")
         else:
-            print("Nie znaleziono notatek do usunięcia.")
+            print("Nie znaleziono notatek do usunięcia.\n")
 
 def pobierz_input():
     """Pobiera polecenie użytkownika w trybie interaktywnym."""
