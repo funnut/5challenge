@@ -48,8 +48,9 @@ def glowna_funkcja(command):
             "Commands:\n"
             ": quit, q, exit\n"
             ": cls, clear   - clear screen\n"
-            ": show, s      - show the last set of notes (default: 15)\n"
+            ": show, s      - show the last set of notes (default: 10)\n"
             ": show [N]     - show N notes\n"
+            ": show [str]   - show notes containing [str]\n"
             ": show all     - show all notes\n"
             ": del [id]     - delete a note containing [id]\n"
             ": del L        - delete the last note\n"
@@ -81,11 +82,16 @@ def read_file(a):
             if a == 'all':
                 do_wyswietlenia = linie
             elif a == 'last':
-                do_wyswietlenia = linie[-15:] # sets nr of lines shown by 'show'
+                do_wyswietlenia = linie[-10:] # sets nr of lines shown by 'show'
             elif a.isdigit():
                 do_wyswietlenia = linie[-int(a):]
             else:
-                return print("Niepoprawny parametr!\n")
+                znalezione = [linia for linia in linie if a.lower() in linia.lower()]
+                if znalezione:
+                    print (f"Znaleziono {len(znalezione)} pasujących elementów.")
+                    do_wyswietlenia = znalezione
+                else:
+                    return print("Nie znaleziono pasujących elementów!\n")
             for linia in do_wyswietlenia:
                 parts = linia.split()
                 formatted_date = "/".join(parts[1].split("/")[1:])  # Usunięcie roku
@@ -167,6 +173,7 @@ if __name__ == "__main__":
         write_file(note)
         sys.exit()
 
+
     readline.set_history_length(100)
     print(fr"""
  _ _
@@ -175,5 +182,5 @@ if __name__ == "__main__":
 | | \__ \ (_| |
 |_|_|___/\__, |WELCOME
 quit - help |_|{randrange(0,1000)}""")
-#    print(f"\n{randrange(0,1000)} -> quit -> help")
     pobierz_input()
+
