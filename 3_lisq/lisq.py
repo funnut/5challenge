@@ -60,7 +60,7 @@ def glowna_funkcja(command):
             ": del [id]     - delete a note containing [id]\n"
             ": del L        - delete the last note\n"
             ": del all      - delete all notes\n"
-            ": reiterate()  - function that reiterate & rename id of a file\n")
+            ": reiterate()  - function that reiterate iXXX\n")
         return
 ### EXIT
     elif cmd in ['quit', 'q', 'exit']:
