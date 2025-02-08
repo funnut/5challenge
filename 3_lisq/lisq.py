@@ -64,7 +64,7 @@ def glowna_funkcja(command):
         return
 ### EXIT
     elif cmd in ['quit', 'q', 'exit']:
-        print("Zamknięcie programu.")
+        print('')
         sys.exit()
 ### INVALID COMMAND
     print("### Nieprawidłowe polecenie! ###")
@@ -81,7 +81,7 @@ def sprawdz_input(usr_input):
 def read_file(a):
     """Odczytuje plik i wyświetla notatki."""
     terminal_width = shutil.get_terminal_size().columns
-    print('\n _id _data','::','=' * (terminal_width-14))
+    print('\n _id _data','=' * (terminal_width-12))
     try:
         with open(notesfilename, 'r', encoding='utf-8') as plik:
             linie = plik.readlines()
@@ -199,9 +199,16 @@ def pobierz_input():
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
-        note = " ".join(sys.argv[1:])
-        write_file(note)
-        sys.exit()
+        if len(sys.argv) == 2 and sys.argv[1] in ['show', 's']:
+            read_file('last')
+            sys.exit()
+        elif len(sys.argv) == 3 and sys.argv[1] in ['show', 's']:
+            read_file(sys.argv[2])
+            sys.exit()
+        else:
+            note = " ".join(sys.argv[1:])
+            write_file(note)
+            sys.exit()
 
 
     readline.set_history_length(100)
