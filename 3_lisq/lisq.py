@@ -5,7 +5,7 @@
 ############## by funnut
 
 import sys
-import re # reiteracja id
+import re # match() for reiterate()
 import shlex
 import shutil # szerokość terminalu
 import readline # historia poleceń
