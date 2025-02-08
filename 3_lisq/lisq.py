@@ -5,6 +5,7 @@
 ############## by funnut
 
 import sys
+import re # reiteracja id
 import shlex
 import shutil # szerokość terminalu
 import readline # historia poleceń
@@ -42,10 +43,14 @@ def glowna_funkcja(command):
     elif cmd in ['cls', 'clear']:
         print("\n" * 50)
         return
+### REITERATE
+    elif cmd == 'reiterate()':
+        reiterate()
+        print ('\nreiterate _done_\n')
+        return
 ### HELP
     elif cmd in ['help', 'h']:
-        print("\n>> liseq is a free and OpenSource notes app for you <<\n"
-            "Commands:\n"
+        print("\n>> liseq is a free and OpenSource notes app for you <<\n\n"
             ": quit, q, exit\n"
             ": cls, clear   - clear screen\n"
             ": show, s      - show the last set of notes (default: 10)\n"
@@ -54,7 +59,8 @@ def glowna_funkcja(command):
             ": show all     - show all notes\n"
             ": del [id]     - delete a note containing [id]\n"
             ": del L        - delete the last note\n"
-            ": del all      - delete all notes\n")
+            ": del all      - delete all notes\n"
+            ": reiterate()  - function that reiterate & rename id of a file\n")
         return
 ### EXIT
     elif cmd in ['quit', 'q', 'exit']:
@@ -116,7 +122,7 @@ def write_file(a):
     data_ = datetime.now().strftime("%Y/%m/%d")
     with open(notesfilename, 'a', encoding='utf-8') as file:
         file.write(f"{formatted_id} {data_} :: {a}\n")
-    print(f'Notatka została dodana: {a}\n')
+    print('\nNotatka została dodana.')
 
 def delete(arg):
     """Usuwa notatki na podstawie podanego argumentu:
@@ -127,37 +133,62 @@ def delete(arg):
     with open(notesfilename, "r", encoding="utf-8") as plik:
         linie = plik.readlines()
     if arg == "all":
-        yesno = input("Czy na pewno chcesz usunąć wszystkie notatki? (y/n): ")
+        yesno = input("\nCzy na pewno chcesz usunąć wszystkie notatki? (y/n): ")
         if yesno.lower() == 'y':
             open(notesfilename, "w", encoding="utf-8").close()  # Czyścimy plik
-            print("Wszystkie notatki zostały usunięte.\n")
+            print("\nWszystkie notatki zostały usunięte.")
         else:
-            print("Operacja anulowana.\n")
+            print("\nOperacja anulowana.")
     elif arg == "l":
         if linie:
-            yesno = input("Czy na pewno chcesz usunąć ostatnią notatkę? (y/n): ")
+            yesno = input("\nCzy na pewno chcesz usunąć ostatnią notatkę? (y/n): ")
             if yesno.lower() == 'y':
                 with open(notesfilename, "w", encoding="utf-8") as plik:
                     plik.writelines(linie[:-1])  # Zapisujemy plik bez ostatniej linii
-                print("Ostatnia notatka została usunięta.\n")
+                print("\nOstatnia notatka została usunięta.")
             else:
-                print("Operacja anulowana.\n")
+                print("\nOperacja anulowana.")
         else:
-            print("Brak notatek do usunięcia.\n")
+            print("\nBrak notatek do usunięcia.")
     else:
         nowe_linie = [linia for linia in linie if arg not in linia]
         numer = len(linie) - len(nowe_linie)
 
         if numer > 0:
-            yesno = input(f"Czy usunąć {numer} notatki zawierające identyfikator {arg}? (y/n): ")
+            yesno = input(f"\nCzy usunąć {numer} notatki zawierające identyfikator {arg}? (y/n): ")
             if yesno.lower() == 'y':
                 with open(notesfilename, "w", encoding="utf-8") as plik:
                     plik.writelines(nowe_linie)
-                print(f"Usunięto {numer} notatki zawierające identyfikator {arg}.\n")
+                reiterate()
+                print(f"\nUsunięto {numer} notatki zawierające identyfikator {arg}.")
             else:
-                print("Operacja anulowana.\n")
+                print("\nOperacja anulowana.")
         else:
-            print("Nie znaleziono notatek do usunięcia.\n")
+            print("\nNie znaleziono notatek do usunięcia.")
+
+
+def reiterate():
+    with open(notesfilename, "r", encoding="utf-8") as f:
+        linie = f.readlines()
+
+    nowy_numer = 1
+    poprawione_linie = []
+
+    for linia in linie:
+        # Sprawdzenie, czy linia zaczyna się od iXXX
+        dopasowanie = re.match(r"i\d{1,}", linia)
+        if dopasowanie:
+            nowa_linia = f"i{nowy_numer:03d}{linia[dopasowanie.end():]}"
+            nowy_numer += 1
+        else:
+            nowa_linia = linia  # Zachowaj linię bez zmian
+
+        poprawione_linie.append(nowa_linia)
+
+    # Nadpisanie pliku poprawionymi danymi
+    with open(notesfilename, "w", encoding="utf-8") as f:
+        f.writelines(poprawione_linie)
+
 
 def pobierz_input():
     """Pobiera polecenie użytkownika w trybie interaktywnym."""
