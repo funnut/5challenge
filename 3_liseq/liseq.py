@@ -1,7 +1,7 @@
 # Lista zadań (To-Do List)
 # Stwórz aplikację do zarządzania zadaniami, która pozwala użytkownikowi dodawać, usuwać i wyświetlać zadania.
 
-### _lisq_ ###
+### _liseq_ ###
 ############## by funnut
 
 import sys
@@ -219,9 +219,9 @@ if __name__ == "__main__":
     readline.set_history_length(100)
     print(fr"""
  _ _
-| (_)___  __ _
-| | / __|/ _` |
-| | \__ \ (_| |
-|_|_|___/\__, |WELCOME
-quit - help |_|{randrange(0,1000)}""")
+| (_)___  ___  __ _
+| | / __|/ _ \/ _` |
+| | \__ \  __/ (_| |
+|_|_|___/\___|\__, |WELCOME
+     quit - help |_|{randrange(0,1000)}""")
     pobierz_input()
