@@ -12,7 +12,9 @@ import readline # historia poleceń
 from datetime import datetime
 from random import randrange
 
+
 notesfilename = '/data/data/com.termux/files/home/notes/notes.txt'
+
 
 def glowna_funkcja(command):
     cmd, arg = command  # Rozpakowanie tuple
@@ -21,7 +23,7 @@ def glowna_funkcja(command):
         if not arg:
             arg = input("Wpisz notatkę: ").strip()
             if not arg:
-                print ("Anulowano dodawanie – nie podano treści notatki.")
+                print ("\nAnulowano dodawanie – nie podano treści notatki.")
                 return
         if arg:
             write_file(arg)
@@ -31,7 +33,7 @@ def glowna_funkcja(command):
         if not arg:
             arg = input("Wpisz ID: ").strip().lower()
             if not arg:
-                print("Anulowano usuwanie – nie podano ID.")
+                print("\nAnulowano usuwanie – nie podano ID.")
                 return
         delete(arg)
         return
@@ -50,7 +52,7 @@ def glowna_funkcja(command):
         return
 ### HELP
     elif cmd in ['help', 'h']:
-        print("\n>> liseq is a free and OpenSource notes app for you <<\n\n"
+        print("\n>> liseq is a free and OpenSource notes app for you <<\n"
             ": quit, q, exit\n"
             ": cls, clear   - clear screen\n"
             ": show, s      - show the last set of notes (default: 10)\n"
@@ -67,7 +69,8 @@ def glowna_funkcja(command):
         print('')
         sys.exit()
 ### INVALID COMMAND
-    print("### Nieprawidłowe polecenie! ###")
+    print("\n### Nieprawidłowe polecenie! ###")
+
 
 def sprawdz_input(usr_input):
     """Przetwarzanie wejścia od użytkownika na polecenie i argument."""
@@ -77,6 +80,7 @@ def sprawdz_input(usr_input):
         return (usr_input[0].lower(), None)
     else:
         return (usr_input[0].lower(), usr_input[1])
+
 
 def read_file(a):
     """Odczytuje plik i wyświetla notatki."""
@@ -105,6 +109,7 @@ def read_file(a):
     except FileNotFoundError:
         print("Plik nie został znaleziony!")
 
+
 def write_file(a):
     """Dodaje nową notatkę do pliku."""
     try:
@@ -123,6 +128,7 @@ def write_file(a):
     with open(notesfilename, 'a', encoding='utf-8') as file:
         file.write(f"{formatted_id} {data_} :: {a}\n")
     print('\nNotatka została dodana.')
+
 
 def delete(arg):
     """Usuwa notatki na podstawie podanego argumentu:
@@ -170,10 +176,8 @@ def delete(arg):
 def reiterate():
     with open(notesfilename, "r", encoding="utf-8") as f:
         linie = f.readlines()
-
     nowy_numer = 1
     poprawione_linie = []
-
     for linia in linie:
         # Sprawdzenie, czy linia zaczyna się od iXXX
         dopasowanie = re.match(r"i\d{1,}", linia)
@@ -196,6 +200,7 @@ def pobierz_input():
         print("add / del / show")
         usr_input = shlex.split(input(">> ").strip())
         glowna_funkcja(sprawdz_input(usr_input))
+
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
@@ -220,4 +225,3 @@ if __name__ == "__main__":
 |_|_|___/\__, |WELCOME
 quit - help |_|{randrange(0,1000)}""")
     pobierz_input()
-
