@@ -225,3 +225,4 @@ if __name__ == "__main__":
 |_|_|___/\___|\__, |WELCOME
      quit - help |_|{randrange(0,1000)}""")
     pobierz_input()
+
