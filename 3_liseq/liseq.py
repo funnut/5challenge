@@ -2,7 +2,7 @@
 # Stwórz aplikację do zarządzania zadaniami, która pozwala użytkownikowi dodawać, usuwać i wyświetlać zadania.
 
 ### _liseq_ ###
-############## by funnut
+############### by funnut
 
 import sys
 import re # match() for reiterate()
@@ -52,17 +52,17 @@ def glowna_funkcja(command):
         return
 ### HELP
     elif cmd in ['help', 'h']:
-        print("\n>> liseq is a free and OpenSource notes app for you <<\n"
+        print("\n>> liseq ® Polish -> \"foxie\" is a Free & OpenSource notes app for you <<\n"
             ": quit, q, exit\n"
             ": cls, clear   - clear screen\n"
             ": show, s      - show the last set of notes (default: 10)\n"
-            ": show [N]     - show N notes\n"
-            ": show [str]   - show notes containing [str]\n"
+            ": show [int]   - show [integer] notes\n"
+            ": show [str]   - show notes containing [string]\n"
             ": show all     - show all notes\n"
-            ": del [id]     - delete a note containing [id]\n"
-            ": del L        - delete the last note\n"
+            ": del [str]    - delete a note containing [string]\n"
+            ": del l        - delete the last note\n"
             ": del all      - delete all notes\n"
-            ": reiterate()  - function that reiterate iXXX\n")
+            ": reiterate()  - function that reiterate a file (iXXX)\n")
         return
 ### EXIT
     elif cmd in ['quit', 'q', 'exit']:
