@@ -46,10 +46,15 @@ def glowna_funkcja(command):
         print("\n" * 50)
         return
 ### REITERATE
-    elif cmd == 'reiterate()':
-        reiterate()
-        print ('\nreiterate _done_\n')
-        return
+    elif cmd == 'reiterate':
+        yesno = input (f'Czy chcesz reiterować plik {notesfilename}? (y/n): ')
+        if yesno.lower() in ['y', 'yes', '']:
+            reiterate()
+            print ('\nReiteracja ukończona.')
+            return
+        else:
+            print ('\nReiteracja anulowana.')
+            return
 ### HELP
     elif cmd in ['help', 'h']:
         print("\n>> liseq ® Polish -> \"foxie\" is a Free & OpenSource notes app for you <<\n"
@@ -62,7 +67,7 @@ def glowna_funkcja(command):
             ": del [str]    - delete a note containing [string]\n"
             ": del l        - delete the last note\n"
             ": del all      - delete all notes\n"
-            ": reiterate()  - function that reiterate a file (iXXX)\n")
+            ": reiterate    - function that reiterate a file (iXXX)\n")
         return
 ### EXIT
     elif cmd in ['quit', 'q', 'exit']:
@@ -148,7 +153,7 @@ def delete(arg):
     elif arg == "l":
         if linie:
             yesno = input("\nCzy na pewno chcesz usunąć ostatnią notatkę? (y/n): ")
-            if yesno.lower() == 'y':
+            if yesno.lower() in ['y', '']:
                 with open(notesfilename, "w", encoding="utf-8") as plik:
                     plik.writelines(linie[:-1])  # Zapisujemy plik bez ostatniej linii
                 print("\nOstatnia notatka została usunięta.")
@@ -162,7 +167,7 @@ def delete(arg):
 
         if numer > 0:
             yesno = input(f"\nCzy usunąć {numer} notatki zawierające identyfikator {arg}? (y/n): ")
-            if yesno.lower() == 'y':
+            if yesno.lower() in ['y', '']:
                 with open(notesfilename, "w", encoding="utf-8") as plik:
                     plik.writelines(nowe_linie)
                 reiterate()
