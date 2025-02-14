@@ -1,8 +1,8 @@
 # Lista zadań (To-Do List)
 # Stwórz aplikację do zarządzania zadaniami, która pozwala użytkownikowi dodawać, usuwać i wyświetlać zadania.
 
-### _liseq_ ###
-############### by funnut
+### liseq ###
+############# by funnut
 
 import sys
 import re # match() for reiterate()
@@ -110,7 +110,7 @@ def read_file(a):
                 parts = linia.split()
                 formatted_date = "/".join(parts[1].split("/")[1:])  # Usunięcie roku
                 print(f"{parts[0]} {formatted_date} {' '.join(parts[2:]).strip()}")
-            print(f'\nZnaleziono {len(do_wyswietlenia)} pasujących elementów.')
+            print(f'\nZnaleziono {len(do_wyswietlenia)} pasujących elementów.\n')
     except FileNotFoundError:
         print("Plik nie został znaleziony!")
 
@@ -132,7 +132,7 @@ def write_file(a):
     data_ = datetime.now().strftime("%Y/%m/%d")
     with open(notesfilename, 'a', encoding='utf-8') as file:
         file.write(f"{formatted_id} {data_} :: {a}\n")
-    print('\nNotatka została dodana.')
+    print('\nNotatka została dodana.\n')
 
 
 def delete(arg):
