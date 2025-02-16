@@ -226,6 +226,6 @@ if __name__ == "__main__":
 | | / __|/ _` |
 | | \__ \ (_| |
 |_|_|___/\__, |WELCOME
-quit - help |_|{randrange(0,1000)}
+ quit - help|_|{randrange(0,1000)}
 """)
     pobierz_input()
