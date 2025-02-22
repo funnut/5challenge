@@ -15,8 +15,14 @@
 # Policz zdania
 # Określ najczęściej występujące słowa (maks. 3)
 
-sampletxt = ['To jest przykładowy tekst wprowadzony przez użytkownika. Jest on stworzony na potrzeby tworzenia programu do analizy tekstu. Tekst może być wprowadzony bezpośrednio do programu lub pobrany z pliku txt. Słowo "tekst" występuje tu 4 razy.']
+import shlex
 
-new = split(sampletxt)
+txt = 'To jest przykładowy tekst wprowadzony przez użytkownika. Jest on stworzony na potrzeby tworzenia programu do analizy tekstu. Tekst może być wprowadzony bezpośrednio do programu lub pobrany z pliku txt. Słowo tekst występuje tu 4 razy.'
 
+new = txt.split()
+
+print (txt)
+print (new)
 print (len(new))
+for i in new:
+      print (len(i), end=', ')
