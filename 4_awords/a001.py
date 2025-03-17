@@ -22,6 +22,7 @@ txt = 'To jest przykładowy tekst wprowadzony przez użytkownika. Jest on stworz
 new = txt.split()
 
 print (txt)
+print (len(txt))
 print (new)
 print (len(new))
 for i in new:

@@ -218,7 +218,6 @@ if __name__ == "__main__":
             write_file(note)
             sys.exit()
 
-
     readline.set_history_length(100)
     print(fr"""
  _ _
