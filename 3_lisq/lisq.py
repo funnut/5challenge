@@ -23,7 +23,7 @@ def glowna_funkcja(command):
         if not arg:
             arg = input("Wpisz notatkę: ").strip()
             if not arg:
-                print ("\nAnulowano dodawanie – nie podano treści notatki.")
+                print ("\nAnulowano dodawanie – nie podano treści notatki.\n")
                 return
         if arg:
             write_file(arg)
@@ -33,7 +33,7 @@ def glowna_funkcja(command):
         if not arg:
             arg = input("Wpisz ID: ").strip().lower()
             if not arg:
-                print("\nAnulowano usuwanie – nie podano ID.")
+                print("\nAnulowano usuwanie – nie podano ID.\n")
                 return
         delete(arg)
         return
@@ -47,13 +47,13 @@ def glowna_funkcja(command):
         return
 ### REITERATE
     elif cmd == 'reiterate':
-        yesno = input (f'Czy chcesz reiterować plik {notesfilename}? (y/n): ')
+        yesno = input (f'\nCzy chcesz reiterować plik {notesfilename}? (y/n): ')
         if yesno.lower() in ['y', 'yes', '']:
             reiterate()
-            print ('\nReiteracja ukończona.')
+            print ('\nReiteracja ukończona.\n')
             return
         else:
-            print ('\nReiteracja anulowana.')
+            print ('\nReiteracja anulowana.\n')
             return
 ### HELP
     elif cmd in ['help', 'h']:
@@ -74,7 +74,7 @@ def glowna_funkcja(command):
         print('')
         sys.exit()
 ### INVALID COMMAND
-    print("\n### Nieprawidłowe polecenie! ###")
+    print("\nNieprawidłowe polecenie.\n")
 
 
 def sprawdz_input(usr_input):
@@ -105,14 +105,14 @@ def read_file(a):
                 if znalezione:
                     do_wyswietlenia = znalezione
                 else:
-                    return print("Nie znaleziono pasujących elementów!\n")
+                    return print("\nNie znaleziono pasujących elementów.\n")
             for linia in do_wyswietlenia:
                 parts = linia.split()
                 formatted_date = "/".join(parts[1].split("/")[1:])  # Usunięcie roku
                 print(f"{parts[0]} {formatted_date} {' '.join(parts[2:]).strip()}")
             print(f'\nZnaleziono {len(do_wyswietlenia)} pasujących elementów.\n')
     except FileNotFoundError:
-        print("Plik nie został znaleziony!")
+        print("\nPlik nie został znaleziony.\n")
 
 
 def write_file(a):
@@ -147,20 +147,20 @@ def delete(arg):
         yesno = input("\nCzy na pewno chcesz usunąć wszystkie notatki? (y/n): ")
         if yesno.lower() == 'y':
             open(notesfilename, "w", encoding="utf-8").close()  # Czyścimy plik
-            print("\nWszystkie notatki zostały usunięte.")
+            print("\nWszystkie notatki zostały usunięte.\n")
         else:
-            print("\nOperacja anulowana.")
+            print("\nOperacja anulowana.\n")
     elif arg == "l":
         if linie:
             yesno = input("\nCzy na pewno chcesz usunąć ostatnią notatkę? (y/n): ")
             if yesno.lower() in ['y', '']:
                 with open(notesfilename, "w", encoding="utf-8") as plik:
                     plik.writelines(linie[:-1])  # Zapisujemy plik bez ostatniej linii
-                print("\nOstatnia notatka została usunięta.")
+                print("\nOstatnia notatka została usunięta.\n")
             else:
-                print("\nOperacja anulowana.")
+                print("\nOperacja anulowana.\n")
         else:
-            print("\nBrak notatek do usunięcia.")
+            print("\nBrak notatek do usunięcia.\n")
     else:
         nowe_linie = [linia for linia in linie if arg not in linia]
         numer = len(linie) - len(nowe_linie)
@@ -171,11 +171,11 @@ def delete(arg):
                 with open(notesfilename, "w", encoding="utf-8") as plik:
                     plik.writelines(nowe_linie)
                 reiterate()
-                print(f"\nUsunięto {numer} notatki zawierające identyfikator {arg}.")
+                print(f"\nUsunięto {numer} notatki zawierające identyfikator {arg}.\n")
             else:
-                print("\nOperacja anulowana.")
+                print("\nOperacja anulowana.\n")
         else:
-            print("\nNie znaleziono notatek do usunięcia.")
+            print("\nNie znaleziono notatek do usunięcia.\n")
 
 
 def reiterate():
@@ -212,6 +212,9 @@ if __name__ == "__main__":
             sys.exit()
         elif len(sys.argv) == 3 and sys.argv[1] in ['show', 's']:
             read_file(sys.argv[2])
+            sys.exit()
+        elif len(sys.argv) == 3 and sys.argv[1] == 'del':
+            delete(sys.argv[2])
             sys.exit()
         else:
             note = " ".join(sys.argv[1:])
