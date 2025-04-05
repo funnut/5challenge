@@ -47,8 +47,8 @@ def glowna_funkcja(command):
         return
 ### REITERATE
     elif cmd == 'reiterate':
-        yesno = input (f'\nCzy chcesz reiterować plik {notesfilename}? (y/n): ')
-        if yesno.lower() in ['y', 'yes', '']:
+        yesno = input (f'\nCzy chcesz reiterować wszystkie notatki? (t/n): ')
+        if yesno.lower() in ['y', 'yes','t','tak', '']:
             reiterate()
             print ('\nReiteracja ukończona.\n')
             return
@@ -112,7 +112,7 @@ def read_file(a):
                 print(f"{parts[0]} {formatted_date} {' '.join(parts[2:]).strip()}")
             print(f'\nZnaleziono {len(do_wyswietlenia)} pasujących elementów.\n')
     except FileNotFoundError:
-        print("\nPlik nie został znaleziony.\n")
+        print(f"\n'{notesfilename}'\n\nPlik nie został znaleziony.\n")
 
 
 def write_file(a):
@@ -144,16 +144,16 @@ def delete(arg):
     with open(notesfilename, "r", encoding="utf-8") as plik:
         linie = plik.readlines()
     if arg == "all":
-        yesno = input("\nCzy na pewno chcesz usunąć wszystkie notatki? (y/n): ")
-        if yesno.lower() == 'y':
+        yesno = input("\nTa operacja trwale usunie wszystkie notatki.\nCzy chcesz kontynuować? (t/n): ")
+        if yesno.lower() in ['y','yes','t','tak']:
             open(notesfilename, "w", encoding="utf-8").close()  # Czyścimy plik
             print("\nWszystkie notatki zostały usunięte.\n")
         else:
             print("\nOperacja anulowana.\n")
     elif arg == "l":
         if linie:
-            yesno = input("\nCzy na pewno chcesz usunąć ostatnią notatkę? (y/n): ")
-            if yesno.lower() in ['y', '']:
+            yesno = input("\nTa operacja trwale usunie ostatnio dodaną notatkę.\nCzy chcesz kontynuować? (t/n): ")
+            if yesno.lower() in ['y','yes','t','tak','']:
                 with open(notesfilename, "w", encoding="utf-8") as plik:
                     plik.writelines(linie[:-1])  # Zapisujemy plik bez ostatniej linii
                 print("\nOstatnia notatka została usunięta.\n")
@@ -166,8 +166,8 @@ def delete(arg):
         numer = len(linie) - len(nowe_linie)
 
         if numer > 0:
-            yesno = input(f"\nCzy usunąć {numer} notatki zawierające identyfikator {arg}? (y/n): ")
-            if yesno.lower() in ['y', '']:
+            yesno = input(f"\nTa operacja trwale usunie {numer} notatek zawierających '{arg}'.\nCzy chcesz kontynuować? (t/n): ")
+            if yesno.lower() in ['y','yes','t','tak','']:
                 with open(notesfilename, "w", encoding="utf-8") as plik:
                     plik.writelines(nowe_linie)
                 reiterate()
@@ -200,14 +200,14 @@ def reiterate():
 def pobierz_input():
     """Pobiera polecenie użytkownika w trybie interaktywnym."""
     while True:
-        print("add / del / show")
+        print(">> add / del / show")
         usr_input = shlex.split(input(">> ").strip())
         glowna_funkcja(sprawdz_input(usr_input))
 
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
-        if len(sys.argv) == 2 and sys.argv[1] in ['show', 's']:
+        if len(sys.argv) == 2 and sys.argv[1] in ['show','s']:
             read_file('last')
             sys.exit()
         elif len(sys.argv) == 3 and sys.argv[1] in ['show', 's']:
