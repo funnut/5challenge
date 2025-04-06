@@ -10,7 +10,7 @@ import shlex
 import shutil # szerokość terminalu
 import readline # historia poleceń
 from datetime import datetime
-from random import randrange
+from random import randrange, choice
 
 
 notesfilename = '/data/data/com.termux/files/home/notatnik/notatnik.txt'
@@ -64,6 +64,7 @@ def glowna_funkcja(command):
             ": show [int]   - show [integer] notes\n"
             ": show [str]   - show notes containing [string]\n"
             ": show all     - show all notes\n"
+            ": show random  - show random note\n"
             ": del [str]    - delete a note containing [string]\n"
             ": del l        - delete the last note\n"
             ": del all      - delete all notes\n"
@@ -98,6 +99,8 @@ def read_file(a):
                 do_wyswietlenia = linie
             elif a == 'last':
                 do_wyswietlenia = linie[-10:] # sets nr of lines shown by 'show'
+            elif a in ['random', 'r']:
+                do_wyswietlenia = [choice(linie)]
             elif a.isdigit():
                 do_wyswietlenia = linie[-int(a):]
             else:
