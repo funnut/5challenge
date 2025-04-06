@@ -13,7 +13,7 @@ from datetime import datetime
 from random import randrange
 
 
-notesfilename = '/data/data/com.termux/files/home/notes/notes.txt'
+notesfilename = '/data/data/com.termux/files/home/notatnik/notatnik.txt'
 
 
 def glowna_funkcja(command):
