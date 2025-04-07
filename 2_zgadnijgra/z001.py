@@ -18,12 +18,12 @@ from random import randrange
 
 losowa = randrange(1, 100)
 
-print ("\n\nPodaj nazwę gracza: ")
+print ("\nPodaj nazwę gracza: ")
 username = input().strip()   # strip usuwa spacje
 print (f"""
 >>> Witaj {username}! <<<
 \nWłasnie jedna z liczb w przedziale od 0 do 100 się zgubiła...
-Czy potrafisz ją odnaleźć?""")
+\nCzy potrafisz ją odnaleźć?""")
 
 
 def sprawdz_odleglosc (a, b):
@@ -56,7 +56,7 @@ while True:
             print (komentator(odleglosc))
         else:
             print (f"Strzal w dziesiatke!\n\nChodzilo o liczbe {losowa}!\n")
-            yesno = input("Czy chcesz zagrać ponownie? (t/n): ")
+            yesno = input("\nCzy chcesz zagrać ponownie? (t/n): ")
             if yesno in ['tak','t','']:
                 losowa = randrange(1, 100)
                 continue
