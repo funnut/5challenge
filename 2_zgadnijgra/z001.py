@@ -17,7 +17,6 @@
 from random import randrange
 
 
-
 losowa = randrange(1, 100)
 
 print ("\nPodaj nazwę gracza: ")
@@ -25,7 +24,7 @@ username = input().strip()   # strip usuwa spacje
 
 
 print (f"""
->>> Witaj {username}! <<<
+💐🌻🌺 >>> Witaj {username}! <<< 🌻🌺🌼
 \nWłasnie jedna z liczb w przedziale od 0 do 100 się zgubiła...
 \nCzy potrafisz ją odnaleźć?""")
 
@@ -52,7 +51,6 @@ def komentator (a):
 
 # Główna pętla
 
-
 while True:
     try:
         strzal = int(input("\nPodaj, jaka to liczba: "))
@@ -60,7 +58,7 @@ while True:
         if odleglosc: 	# Komentarz do odległości
             print (komentator(odleglosc))
         else:
-            print (f"Strzal w dziesiatke!\n\nChodzilo o liczbe {losowa}!\n")
+            print (f"Strzal w dziesiatke!\n\nChodzilo o liczbe {losowa}! 👑\n")
             yesno = input("\nCzy chcesz zagrać ponownie? (t/n): ")
             if yesno in ['tak','t','']:
                 losowa = randrange(1, 100)
@@ -70,5 +68,6 @@ while True:
                 break
     except ValueError:
         print ("Szukamy liczby calkowitej!")
+
 
 
