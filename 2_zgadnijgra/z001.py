@@ -16,10 +16,14 @@
 
 from random import randrange
 
+
+
 losowa = randrange(1, 100)
 
 print ("\nPodaj nazwę gracza: ")
 username = input().strip()   # strip usuwa spacje
+
+
 print (f"""
 >>> Witaj {username}! <<<
 \nWłasnie jedna z liczb w przedziale od 0 do 100 się zgubiła...
@@ -48,6 +52,7 @@ def komentator (a):
 
 # Główna pętla
 
+
 while True:
     try:
         strzal = int(input("\nPodaj, jaka to liczba: "))
@@ -65,3 +70,5 @@ while True:
                 break
     except ValueError:
         print ("Szukamy liczby calkowitej!")
+
+
