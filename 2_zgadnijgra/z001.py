@@ -15,7 +15,7 @@
 ### Funkcja sprawdzajaca "odleglosc" inputu (wartosci bezwzgledne)
 
 from random import randrange
-
+import readline
 
 losowa = randrange(1, 100)
 
@@ -53,6 +53,7 @@ def komentator (a):
 
 while True:
     try:
+        readline.set_history_length(100)
         strzal = int(input("\nPodaj, jaka to liczba: "))
         odleglosc = sprawdz_odleglosc(losowa, strzal)
         if odleglosc: 	# Komentarz do odległości
