@@ -208,21 +208,19 @@ def pobierz_input():
         glowna_funkcja(sprawdz_input(usr_input))
 
 
+"""Interfejs wiersza poleceń"""
 if __name__ == "__main__":
     if len(sys.argv) > 1:
-        if len(sys.argv) == 2 and sys.argv[1] in ['show','s']:
-            read_file('last')
-            sys.exit()
-        elif len(sys.argv) == 3 and sys.argv[1] in ['show', 's']:
-            read_file(sys.argv[2])
-            sys.exit()
-        elif len(sys.argv) == 3 and sys.argv[1] == 'del':
-            delete(sys.argv[2])
-            sys.exit()
-        else:
-            note = " ".join(sys.argv[1:])
+        if sys.argv[1].lower() in ['add', '/', ':']:
+            note = " ".join(sys.argv[2:])
             write_file(note)
             sys.exit()
+        else:
+            usr_input = sys.argv[1:]
+            glowna_funkcja(sprawdz_input(usr_input))
+            sys.exit()
+
+
 
     readline.set_history_length(100)
     print(fr"""
