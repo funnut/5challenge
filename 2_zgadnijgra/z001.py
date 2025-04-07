@@ -14,31 +14,54 @@
 ### Generator losowych liczb
 ### Funkcja sprawdzajaca "odleglosc" inputu (wartosci bezwzgledne)
 
-import random
-import funk
+from random import randrange
 
-losowa = random.randrange(1, 100)
+losowa = randrange(1, 100)
 
 print ("\n\nPodaj nazwę gracza: ")
 username = input().strip()   # strip usuwa spacje
 print (f"""
 >>> Witaj {username}! <<<
-Własnie jedna z liczb w przedziale od 0 do 100 się zgubiła...
-Czy potrafisz ją odnaleźć?
-Podaj, jaka to liczba:""")
+\nWłasnie jedna z liczb w przedziale od 0 do 100 się zgubiła...
+Czy potrafisz ją odnaleźć?""")
+
+
+def sprawdz_odleglosc (a, b):
+    return abs(a-b)
+
+def komentator (a):
+    if a <= 2:
+        return "GORACOO!"
+    elif a <= 5:
+        return "Bardzo blisko!"
+    elif a <= 10:
+        return "Blisko, blisko..."
+    elif a <= 20:
+        return "Bunkrow nie ma ale niedaleko"
+    elif a <= 50:
+        return "Kazdy miewa gorsze dni"
+    elif a <= 75:
+        return "Bardzo zimno"
+    else:
+        return "Bardzo, bardzo daleko"
+
 
 # Główna pętla
+
 while True:
-	try:
-		odleglosc = funk.sprawdz_odleglosc(losowa, strzal)
-		strzal = int(input())
-		if odleglosc: 	# Komentarz do odległości
-			print (funk.komentator(odleglosc))
-		else:
-			print (f"Strzal w dziesiatke!\nChodzilo o liczbe {losowa}!")
-			break
-
-	except ValueError:
-		print ("Szukamy liczby calkowitej!")
-
-
+    try:
+        strzal = int(input("\nPodaj, jaka to liczba: "))
+        odleglosc = sprawdz_odleglosc(losowa, strzal)
+        if odleglosc: 	# Komentarz do odległości
+            print (komentator(odleglosc))
+        else:
+            print (f"Strzal w dziesiatke!\n\nChodzilo o liczbe {losowa}!\n")
+            yesno = input("Czy chcesz zagrać ponownie? (t/n): ")
+            if yesno in ['tak','t','']:
+                losowa = randrange(1, 100)
+                continue
+            else:
+                print ('')
+                break
+    except ValueError:
+        print ("Szukamy liczby calkowitej!")
