@@ -135,7 +135,8 @@ def write_file(a):
     data_ = datetime.now().strftime("%Y/%m/%d")
     with open(notesfilename, 'a', encoding='utf-8') as file:
         file.write(f"{formatted_id} {data_} :: {a}\n")
-    print('\nNotatka została dodana.\n')
+    read_file('1')
+    print('Notatka została dodana.\n')
 
 
 def delete(arg):
@@ -187,7 +188,6 @@ def reiterate():
     nowy_numer = 1
     poprawione_linie = []
     for linia in linie:
-        # Sprawdzenie, czy linia zaczyna się od iXXX
         dopasowanie = re.match(r"i\d{1,}", linia)
         if dopasowanie:
             nowa_linia = f"i{nowy_numer:03d}{linia[dopasowanie.end():]}"
@@ -195,7 +195,6 @@ def reiterate():
         else:
             nowa_linia = linia  # Zachowaj linię bez zmian
         poprawione_linie.append(nowa_linia)
-    # Nadpisanie pliku poprawionymi danymi
     with open(notesfilename, "w", encoding="utf-8") as f:
         f.writelines(poprawione_linie)
 
