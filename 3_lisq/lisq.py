@@ -66,7 +66,7 @@ def glowna_funkcja(command):
             ": show all     - show all notes\n"
             ": show random  - show random note\n"
             ": del [str]    - delete a note containing [string]\n"
-            ": del l        - delete the last note\n"
+            ": del last, l  - delete the last note\n"
             ": del all      - delete all notes\n"
             ": reiterate    - function that reiterate a file (iXXX)\n")
         return
@@ -154,7 +154,7 @@ def delete(arg):
             print("\nWszystkie notatki zostały usunięte.\n")
         else:
             print("\nOperacja anulowana.\n")
-    elif arg == "l":
+    elif arg in ["l","last"]:
         if linie:
             yesno = input("\nTa operacja trwale usunie ostatnio dodaną notatkę.\nCzy chcesz kontynuować? (t/n): ")
             if yesno.lower() in ['y','yes','t','tak','']:
@@ -202,9 +202,14 @@ def reiterate():
 def pobierz_input():
     """Pobiera polecenie użytkownika w trybie interaktywnym."""
     while True:
-        print(">> add / del / show")
-        usr_input = shlex.split(input(">> ").strip())
-        glowna_funkcja(sprawdz_input(usr_input))
+        try:
+            print(">> add / del / show")
+            usr_input = shlex.split(input(">> ").strip())
+            glowna_funkcja(sprawdz_input(usr_input))
+        except EOFError:
+            print("\n")
+            usr_input = []
+            break
 
 
 """Interfejs wiersza poleceń"""
@@ -227,7 +232,7 @@ if __name__ == "__main__":
 | (_)___  __ _
 | | / __|/ _` |
 | | \__ \ (_| |
-|_|_|___/\__, |WELCOME
+|_|_|___/\__, |
  quit - help|_|{randrange(0,1000)}
 """)
     pobierz_input()
