@@ -37,7 +37,7 @@ print("\nPodaj nazwę gracza: ")
 username = input().strip()  # strip usuwa spacje
 
 print(f"""
-💐🌻🌺 >>> Witaj {username}! <<< 🌻🌺🌼
+>>> Witaj {username}! <<<
 \nWłaśnie jedna z liczb w przedziale od 0 do 100 się zgubiła...
 \nCzy potrafisz ją odnaleźć?""")
 
