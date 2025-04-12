@@ -75,35 +75,38 @@ def oblicz_celnosc(D, N, k=0.1):
 najlepsza_celnosc = wczytaj_najlepsza_celnosc()
 
 while True:
-    losowa = randrange(1, 100)
-    N = 0
-    D = 0
-    while True:
-        try:
-            readline.set_history_length(100)
-            strzal = int(input("\nPodaj, jaka to liczba: "))
-            odleglosc = sprawdz_odleglosc(losowa, strzal)
-            N += 1
-            D = round((D * (N - 1) + odleglosc) / N, 2)  # Aktualizacja średniej odległości
-            celnosc = oblicz_celnosc(D, N, k=0.1)
-            if odleglosc:
-                print(komentator(odleglosc))
-            else:
-                print(f"Strzał w dziesiątkę!\n\nChodziło o liczbę {losowa}! 👑")
-                print(f"Ilość prób: {N}")
-                print(f"Średnia odległość: {D}")
-                print(f"Celność: {celnosc:.2f}%")
-                print(f"\nNajlepsza celność z poprzednich gier: {najlepsza_celnosc:.2f}%")
-                if celnosc < 100 and celnosc > najlepsza_celnosc:
-                    najlepsza_celnosc = celnosc
-                    zapisz_najlepsza_celnosc(najlepsza_celnosc)  # Zapisanie najlepszej celności do pliku
-                    print ("\n🎉 Nowa najlepsza celność!")
-                break
-        except ValueError:
-            print("Szukamy liczby całkowitej!")
-    yesno = input("\nCzy chcesz zagrać ponownie? (t/n): ").lower()
-    if yesno not in ['tak', 't', '']:
-        print('')
+    try:
+        losowa = randrange(1, 100)
+        N = 0
+        D = 0
+        while True:
+            try:
+                readline.set_history_length(100)
+                strzal = int(input("\nPodaj, jaka to liczba: "))
+                odleglosc = sprawdz_odleglosc(losowa, strzal)
+                N += 1
+                D = round((D * (N - 1) + odleglosc) / N, 2)  # Aktualizacja średniej odległości
+                celnosc = oblicz_celnosc(D, N, k=0.1)
+                if odleglosc:
+                    print(komentator(odleglosc))
+                else:
+                    print(f"Strzał w dziesiątkę!\n\nChodziło o liczbę {losowa}! 👑")
+                    print(f"Ilość prób: {N}")
+                    print(f"Średnia odległość: {D}")
+                    print(f"Celność: {celnosc:.2f}%")
+                    print(f"\nNajlepsza celność z poprzednich gier: {najlepsza_celnosc:.2f}%")
+                    if celnosc < 100 and celnosc > najlepsza_celnosc:
+                        najlepsza_celnosc = celnosc
+                        zapisz_najlepsza_celnosc(najlepsza_celnosc)  # Zapisanie najlepszej celności do pliku
+                        print ("\n🎉 Nowa najlepsza celność!")
+                    break
+            except ValueError:
+                print("Szukamy liczby całkowitej!")
+        yesno = input("\nCzy chcesz zagrać ponownie? (t/n): ").lower()
+        if yesno not in ['tak', 't', '']:
+            print('')
+            break
+    except EOFError:
+        print ('\n')
+        yesno = []
         break
-
-
