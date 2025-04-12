@@ -58,7 +58,7 @@ def glowna_funkcja(command):
         print("\n>> lisq ® Polish -> \'foxie\' is a Free & OpenSource notes app for you\n\n"
             ": quit, q, exit\n"
             ": cls, clear   - clear screen\n"
-            ": show, s      - show the last set of notes (default: 10)\n"
+            ": show, s      - show recent notes (default 10)\n"
             ": show [int]   - show [integer] notes\n"
             ": show [str]   - show notes containing [string]\n"
             ": show all     - show all notes\n"
@@ -66,9 +66,10 @@ def glowna_funkcja(command):
             ": del [str]    - delete a note containing [string]\n"
             ": del last, l  - delete the last note\n"
             ": del all      - delete all notes\n"
-            ": reiterate    - function that reiterate a file (iXXX)\n"
-            ": path         - show notes file path\n"
-            ": edit         - open nano editor for notes\n"
+            ": reiterate    - function to renumber note IDs\n"
+            ": path         - shows the path to the notes file\n"
+            ": edit         - opens notes in editor\n"
+            "\nCLI: lisq [cmd] [arg] | lisq :: sample text\n"
             "\nAll rights reserved © funnut\n")
         return
 ### FILE
@@ -76,7 +77,7 @@ def glowna_funkcja(command):
         print(f"\n{notesfilepath}\n")
         return
 ### EDIT
-    elif cmd in ['edit', 'edytuj']:
+    elif cmd in ['edit']:
         print('')
         os.system(f"nano {notesfilepath}")
         return
