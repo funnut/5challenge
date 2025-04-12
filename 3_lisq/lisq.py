@@ -4,6 +4,7 @@
 ### lisq ###
 ############ by SJ
 
+import os
 import sys
 import re # match() for reiterate()
 import shlex
@@ -13,7 +14,7 @@ from datetime import datetime
 from random import randrange, choice
 
 
-notesfilename = '/data/data/com.termux/files/home/notatnik/notatnik.txt'
+notesfilepath = '/data/data/com.termux/files/home/notatnik/notatnik.txt'
 
 
 def glowna_funkcja(command):
@@ -56,8 +57,8 @@ def glowna_funkcja(command):
             print ('\nReiteracja anulowana.\n')
             return
 ### HELP
-    elif cmd in ['help', 'h']:
-        print("\n>> lisq ® Polish -> \"foxie\" is a Free & OpenSource notes app for you\n"
+    elif cmd in ['help', 'h', 'lisq']:
+        print("\n>> lisq ® Polish -> \'foxie\' is a Free & OpenSource notes app for you\n\n"
             ": quit, q, exit\n"
             ": cls, clear   - clear screen\n"
             ": show, s      - show the last set of notes (default: 10)\n"
@@ -68,7 +69,19 @@ def glowna_funkcja(command):
             ": del [str]    - delete a note containing [string]\n"
             ": del last, l  - delete the last note\n"
             ": del all      - delete all notes\n"
-            ": reiterate    - function that reiterate a file (iXXX)\n")
+            ": reiterate    - function that reiterate a file (iXXX)\n"
+            ": path         - show notes file path\n"
+            ": edit         - open nano editor for notes\n"
+            "\nAll rights reserved © funnut\n")
+        return
+### FILE
+    elif cmd in ['path']:
+        print(f"\n{notesfilepath}\n")
+        return
+### EDIT
+    elif cmd in ['edit', 'edytuj']:
+        print('')
+        os.system(f"nano {notesfilepath}")
         return
 ### EXIT
     elif cmd in ['quit', 'q', 'exit']:
@@ -93,7 +106,7 @@ def read_file(a):
     terminal_width = shutil.get_terminal_size().columns
     print('\n _id _data','=' * (terminal_width-12))
     try:
-        with open(notesfilename, 'r', encoding='utf-8') as plik:
+        with open(notesfilepath, 'r', encoding='utf-8') as plik:
             linie = plik.readlines()
             if a == 'all':
                 do_wyswietlenia = linie
@@ -115,13 +128,13 @@ def read_file(a):
                 print(f"{parts[0]} {formatted_date} {' '.join(parts[2:]).strip()}")
             print(f'\nZnaleziono {len(do_wyswietlenia)} pasujących elementów.\n')
     except FileNotFoundError:
-        print(f"\n'{notesfilename}'\n\nPlik nie został znaleziony.\n")
+        print(f"\n'{notesfilepath}'\n\nPlik nie został znaleziony.\n")
 
 
 def write_file(a):
     """Dodaje nową notatkę do pliku."""
     try:
-        with open(notesfilename, 'r', encoding='utf-8') as file:
+        with open(notesfilepath, 'r', encoding='utf-8') as file:
             lines = file.readlines()
         if lines:
             last_line = lines[-1]
@@ -133,10 +146,10 @@ def write_file(a):
         id_ = 1
     formatted_id = f"i{str(id_).zfill(3)}"
     data_ = datetime.now().strftime("%Y/%m/%d")
-    with open(notesfilename, 'a', encoding='utf-8') as file:
+    with open(notesfilepath, 'a', encoding='utf-8') as file:
         file.write(f"{formatted_id} {data_} :: {a}\n")
     read_file('1')
-    print('Notatka została dodana.\n')
+    print("Notatka została dodana.\n")
 
 
 def delete(arg):
@@ -145,12 +158,12 @@ def delete(arg):
     - 'l' - usuwa ostatnią notatkę,
     - 'all' - usuwa wszystkie notatki.
     """
-    with open(notesfilename, "r", encoding="utf-8") as plik:
+    with open(notesfilepath, "r", encoding="utf-8") as plik:
         linie = plik.readlines()
     if arg == "all":
         yesno = input("\nTa operacja trwale usunie wszystkie notatki.\nCzy chcesz kontynuować? (t/n): ")
         if yesno.lower() in ['y','yes','t','tak']:
-            open(notesfilename, "w", encoding="utf-8").close()  # Czyścimy plik
+            open(notesfilepath, "w", encoding="utf-8").close()  # Czyścimy plik
             print("\nWszystkie notatki zostały usunięte.\n")
         else:
             print("\nOperacja anulowana.\n")
@@ -158,7 +171,7 @@ def delete(arg):
         if linie:
             yesno = input("\nTa operacja trwale usunie ostatnio dodaną notatkę.\nCzy chcesz kontynuować? (t/n): ")
             if yesno.lower() in ['y','yes','t','tak','']:
-                with open(notesfilename, "w", encoding="utf-8") as plik:
+                with open(notesfilepath, "w", encoding="utf-8") as plik:
                     plik.writelines(linie[:-1])  # Zapisujemy plik bez ostatniej linii
                 print("\nOstatnia notatka została usunięta.\n")
             else:
@@ -172,7 +185,7 @@ def delete(arg):
         if numer > 0:
             yesno = input(f"\nTa operacja trwale usunie {numer} notatek zawierających '{arg}'.\nCzy chcesz kontynuować? (t/n): ")
             if yesno.lower() in ['y','yes','t','tak','']:
-                with open(notesfilename, "w", encoding="utf-8") as plik:
+                with open(notesfilepath, "w", encoding="utf-8") as plik:
                     plik.writelines(nowe_linie)
                 reiterate()
                 print(f"\nUsunięto {numer} notatki zawierające identyfikator {arg}.\n")
@@ -183,7 +196,7 @@ def delete(arg):
 
 
 def reiterate():
-    with open(notesfilename, "r", encoding="utf-8") as f:
+    with open(notesfilepath, "r", encoding="utf-8") as f:
         linie = f.readlines()
     nowy_numer = 1
     poprawione_linie = []
@@ -195,7 +208,7 @@ def reiterate():
         else:
             nowa_linia = linia  # Zachowaj linię bez zmian
         poprawione_linie.append(nowa_linia)
-    with open(notesfilename, "w", encoding="utf-8") as f:
+    with open(notesfilepath, "w", encoding="utf-8") as f:
         f.writelines(poprawione_linie)
 
 
