@@ -4,10 +4,7 @@
 ### lisq ###
 ############ by SJ
 
-import os
-import sys
-import re # match() for reiterate()
-import shlex
+import os, sys, shlex, re # match() for reiterate()
 import shutil # szerokość terminalu
 import readline # historia poleceń
 from datetime import datetime
