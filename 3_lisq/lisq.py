@@ -55,7 +55,7 @@ def glowna_funkcja(command):
             return
 ### HELP
     elif cmd in ['help', 'h', 'lisq']:
-        print("\n>> lisq ® Polish -> \'foxie\' is a Free & OpenSource notes app for you\n\n"
+        print("\n>> lisq - from Polish \'foxie\' is a free & opensource note taking app for you <<\n\n"
             ": quit, q, exit\n"
             ": cls, clear   - clear screen\n"
             ": show, s      - show recent notes (default 10)\n"
