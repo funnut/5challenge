@@ -56,7 +56,7 @@ def glowna_funkcja(command):
 ### HELP
     elif cmd in ['help', 'h', 'lisq']:
         print("\n# About\n\n"
-            "From Polish \"lisek / foxie\" - lisq is lightweight note-taking app that work with .txt files\n\n"
+            "From Polish \"lisek / foxie\" - lisq is a lightweight note-taking app that work with .txt files\n\n"
             "# Commands\n\n"
             ": quit, q, exit\n"
             ": clear, cls   - clear screen\n"
