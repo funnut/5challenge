@@ -1,4 +1,4 @@
-# lisq
+# about lisq
 
 From Polish *"lisek / foxie"* – lisq is a lightweight and open-source note-taking app that works with `.txt` files.
 
