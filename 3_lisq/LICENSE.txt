@@ -1,4 +1,4 @@
-# Polska wersja:
+Polska wersja:
 
 Copyright © funnut
 
@@ -20,7 +20,8 @@ Wszelkie prawa zastrzeżone.
 
 
 
-# English version:
+
+English version:
 
 Copyright © funnut
 
