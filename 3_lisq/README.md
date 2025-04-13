@@ -1,4 +1,4 @@
->> lisq - from Polish 'foxie' is lightweight and opensource note taking app that work with .txt files <<
+lisq - from Polish 'foxie' is lightweight and opensource note taking app that work with .txt files <<
 
 : quit, q, exit
 : clear, cls   - clear screen
