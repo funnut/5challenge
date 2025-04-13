@@ -1,6 +1,6 @@
 # About
 
-From Polish *"lisek / foxie"* – lisq is a lightweight and open-source note-taking app that works with `.txt` files.
+From Polish *"lisek / foxie"* – lisq is a lightweight and opensource note-taking app that works with `.txt` files.
 
 
 # Commands
@@ -29,7 +29,7 @@ edit            # Open the notes file in editor
 
 ```bash
 lisq [command] [argument]
-lisq :: sample text
+lisq :: sample note text
 alias lisq="python3 /file/path/lisq.py"
 ```
 
