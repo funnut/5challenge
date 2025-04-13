@@ -1,8 +1,8 @@
 lisq - from Polish 'foxie' is lightweight and opensource note taking app that work with .txt files <<
 
-: quit, q, exit
-: clear, cls   - clear screen
-: show, s      - show recent notes (default 10)
+quit, q, exit
+clear, cls   - clear screen
+show, s      - show recent notes (default 10)
 : show [int]   - show [integer] notes
 : show [str]   - show notes containing [string]
 : show all     - show all notes
