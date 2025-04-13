@@ -55,22 +55,26 @@ def glowna_funkcja(command):
             return
 ### HELP
     elif cmd in ['help', 'h', 'lisq']:
-        print("\n>> lisq - from Polish \'foxie\' is lightweight and opensource note taking app that work with .txt files <<\n\n"
+        print("\n# About\n\n"
+            "From Polish \"lisek / foxie\" - lisq is a lightweight and opensource note-taking app that work with .txt files\n\n"
+            "# Commands\n\n"
             ": quit, q, exit\n"
             ": clear, cls   - clear screen\n"
             ": show, s      - show recent notes (default 10)\n"
-            ": show [int]   - show [integer] notes\n"
+            ": show [int]   - show number of recent notes\n"
             ": show [str]   - show notes containing [string]\n"
             ": show all     - show all notes\n"
-            ": show random  - show random note\n"
+            ": show random  - show a random note\n"
             ": del [str]    - delete notes containing [string]\n"
             ": del last, l  - delete the last note\n"
             ": del all      - delete all notes\n"
-            ": reiterate    - function to renumber notes ID\n"
+            ": reiterate    - renumber notes' IDs\n"
             ": path         - show the path to the notes file\n"
-            ": edit         - open notes file in editor\n"
-            "\nCLI: lisq [cmd] [arg] | lisq :: sample text\n"
-            "     alias lisq=\"python3 /file/path/lisq.py\"\n"
+            ": edit         - open the notes file in editor\n"
+            "\n# CLI Usage\n\n"
+            "lisq [command] [argument]\n"
+            "lisq :: sample note text\n"
+            "alias lisq=\"python3 /file/path/lisq.py\"\n"
             "\nAll rights reserved © funnut\n")
         return
 ### FILE
