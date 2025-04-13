@@ -70,12 +70,12 @@ def glowna_funkcja(command):
             ": del all      - delete all notes\n"
             ": reiterate    - renumber notes' IDs\n"
             ": path         - show the path to the notes file\n"
-            ": edit         - open the notes file in editor\n"
-            "\n# CLI Usage\n\n"
+            ": edit         - open the notes file in editor\n\n"
+            "# CLI Usage\n\n"
             "lisq [command] [argument]\n"
             "lisq :: sample note text\n"
-            "alias lisq=\"python3 /file/path/lisq.py\"\n"
-            "\nAll rights reserved © funnut\n")
+            "alias lisq=\"python3 /file/path/lisq.py\"\n\n"
+            "All rights reserved © funnut\n")
         return
 ### FILE
     elif cmd == 'path':
