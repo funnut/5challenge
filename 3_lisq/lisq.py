@@ -1,8 +1,6 @@
 ###### lisq #######
 ################### by © funnut
 
-
-
 import os, sys, shlex, re # match() for reiterate()
 import shutil # szerokość terminalu
 import readline # historia poleceń
@@ -239,7 +237,6 @@ if __name__ == "__main__":
             usr_input = sys.argv[1:]
             glowna_funkcja(sprawdz_input(usr_input))
             sys.exit()
-
 
 
     readline.set_history_length(100)
