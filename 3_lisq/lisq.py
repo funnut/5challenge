@@ -54,7 +54,10 @@ def glowna_funkcja(command):
 ### HELP
     elif cmd in ['help', 'h', 'lisq']:
         print("\n# About\n\n"
-            "From Polish \"lisek / foxie\" - lisq is a lightweight note-taking app that work with .txt files\n\n"
+            "From Polish \"lisek / foxie\" - lisq is a lightweight note-taking app that work with .txt files.\n\n"
+            "Code available under a non-commercial license (see LICENSE file).\n\n"
+            "https://github.com/funnut\n"
+            "Copyright © funnut\n\n"
             "# Commands\n\n"
             ": quit, q, exit\n"
             ": clear, cls   - clear screen\n"
@@ -72,9 +75,7 @@ def glowna_funkcja(command):
             "# CLI Usage\n\n"
             "lisq [command] [argument]\n"
             "lisq :: sample note text\n"
-            "alias lisq=\"python3 /file/path/lisq.py\"\n\n"
-            "https://github.com/funnut\n"
-            "Copyright © funnut\n")
+            "alias lisq=\"python3 /file/path/lisq.py\"\n")
         return
 ### FILE
     elif cmd == 'path':
@@ -227,7 +228,7 @@ def pobierz_input():
             break
 
 
-"""Interfejs wiersza poleceń CLI"""
+"""Interfejs wiersza poleceń"""
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         if sys.argv[1].lower() in ['add','::','/']:
