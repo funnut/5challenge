@@ -1,10 +1,3 @@
- _ _
-| (_)___  __ _
-| | / __|/ _` |
-| | \__ \ (_| |
-|_|_|___/\__, |
-            |_|
-
 # About
 
 From Polish *"lisek / foxie"* – lisq is a lightweight and opensource note-taking app that work with `.txt` files.
