@@ -1,6 +1,7 @@
-# Copyrights © funnut
-# Code available under a non-commercial license (see LICENSE file). 
-# https://github.com/funnut
+###################
+###### lisq #######
+################### by © funnut
+
 
 
 import os, sys, shlex, re # match() for reiterate()
