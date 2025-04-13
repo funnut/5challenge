@@ -33,4 +33,5 @@ lisq :: sample note text
 alias lisq="python3 /file/path/lisq.py"
 ```
 
-**All rights reserved © funnut**
+**Copyrights © funnut**
+> Kod dostępny na zasadach licencji niekomercyjnej (zobacz plik LICENSE).
