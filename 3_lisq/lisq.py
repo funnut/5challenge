@@ -1,8 +1,6 @@
-# Lista zadań (To-Do List)
-# Stwórz aplikację do zarządzania zadaniami, która pozwala użytkownikowi dodawać, usuwać i wyświetlać zadania.
-
 ### lisq ###
-############ by SJ
+############ by funnut
+
 
 import os, sys, shlex, re # match() for reiterate()
 import shutil # szerokość terminalu
