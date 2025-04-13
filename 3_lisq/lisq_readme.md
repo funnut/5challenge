@@ -3,7 +3,7 @@
 From Polish *"lisek / foxie"* – lisq is a lightweight and open-source note-taking app that works with `.txt` files.
 
 
-## Commands
+# Commands
 
 ```
 quit, q, exit          # Exit the app  
@@ -25,7 +25,7 @@ edit                   # Open the notes file in editor
 ```
 
 
-## CLI Usage
+# CLI Usage
 
 ```bash
 lisq [command] [argument]  
