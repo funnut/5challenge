@@ -35,3 +35,5 @@ alias lisq="python3 /file/path/lisq.py"
 
 
 Code available under a non-commercial license (see LICENSE file).
+
+**Copyright © funnut**
