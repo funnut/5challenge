@@ -1,6 +1,3 @@
-### lisq ###
-############ by funnut
-
 # Copyrights © funnut
 # Code available under a non-commercial license (see LICENSE file). 
 # https://github.com/funnut
