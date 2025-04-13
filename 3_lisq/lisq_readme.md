@@ -6,7 +6,7 @@ From Polish *"lisek / foxie"* – lisq is a lightweight and open-source note-tak
 
 ## Commands
 
-'''
+```
 quit, q, exit          # Exit the app  
 clear, cls             # Clear the screen  
 
@@ -23,7 +23,7 @@ del all                # Delete all notes
 reiterate              # Renumber notes' IDs  
 path                   # Show the path to the notes file  
 edit                   # Open the notes file in editor
-'''
+```
 
 ---
 
