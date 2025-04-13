@@ -74,8 +74,8 @@ def glowna_funkcja(command):
             "lisq [command] [argument]\n"
             "lisq :: sample note text\n"
             "alias lisq=\"python3 /file/path/lisq.py\"\n\n"
-            "Copyright © funnut\n"
-            "https://github.com/funnut\n")
+            "https://github.com/funnut\n"
+            "Copyright © funnut\n")
         return
 ### FILE
     elif cmd == 'path':
