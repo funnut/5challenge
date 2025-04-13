@@ -34,5 +34,6 @@ alias lisq="python3 /file/path/lisq.py"
 ```
 
 **Copyrights © funnut**
+
 Code available under a non-commercial license (see LICENSE file).
 https://github.com/funnut
