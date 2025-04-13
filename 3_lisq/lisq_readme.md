@@ -2,7 +2,6 @@
 
 From Polish *"lisek / foxie"* – lisq is a lightweight and open-source note-taking app that works with `.txt` files.
 
----
 
 ## Commands
 
@@ -25,7 +24,6 @@ path                   # Show the path to the notes file
 edit                   # Open the notes file in editor
 ```
 
----
 
 ## CLI Usage
 
@@ -35,6 +33,5 @@ lisq :: sample text
 alias lisq="python3 /file/path/lisq.py"
 ```
 
----
 
 **All rights reserved © funnut**
