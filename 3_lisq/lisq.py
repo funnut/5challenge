@@ -55,29 +55,30 @@ def glowna_funkcja(command):
             return
 ### HELP
     elif cmd in ['help', 'h', 'lisq']:
-        print("\n>> lisq - from Polish \'foxie\' is a free & opensource note taking app for you <<\n\n"
+        print("\n>> lisq - from Polish \'foxie\' is lightweight and opensource note taking app that work with .txt files <<\n\n"
             ": quit, q, exit\n"
-            ": cls, clear   - clear screen\n"
+            ": clear, cls   - clear screen\n"
             ": show, s      - show recent notes (default 10)\n"
             ": show [int]   - show [integer] notes\n"
             ": show [str]   - show notes containing [string]\n"
             ": show all     - show all notes\n"
             ": show random  - show random note\n"
-            ": del [str]    - delete a note containing [string]\n"
+            ": del [str]    - delete notes containing [string]\n"
             ": del last, l  - delete the last note\n"
             ": del all      - delete all notes\n"
-            ": reiterate    - function to renumber note IDs\n"
-            ": path         - shows the path to the notes file\n"
-            ": edit         - opens notes in editor\n"
+            ": reiterate    - function to renumber notes ID\n"
+            ": path         - show the path to the notes file\n"
+            ": edit         - open notes file in editor\n"
             "\nCLI: lisq [cmd] [arg] | lisq :: sample text\n"
+            "     alias lisq=\"python3 /file/path/lisq.py\"\n"
             "\nAll rights reserved © funnut\n")
         return
 ### FILE
-    elif cmd in ['path']:
+    elif cmd == 'path':
         print(f"\n{notesfilepath}\n")
         return
 ### EDIT
-    elif cmd in ['edit']:
+    elif cmd == 'edit':
         print('')
         os.system(f"nano {notesfilepath}")
         return
@@ -136,7 +137,7 @@ def write_file(a):
             lines = file.readlines()
         if lines:
             last_line = lines[-1]
-            last_id = int(last_line.split()[0][2:])  # Extract the numeric part of the ID (after 'id')
+            last_id = int(last_line.split()[0][1:])  # Extract the numeric part of the ID (after 'id')
             id_ = last_id + 1
         else:
             id_ = 1
@@ -223,7 +224,7 @@ def pobierz_input():
             break
 
 
-"""Interfejs wiersza poleceń"""
+"""Interfejs wiersza poleceń CLI"""
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         if sys.argv[1].lower() in ['add','::','/']:
