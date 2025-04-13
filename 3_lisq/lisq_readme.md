@@ -28,7 +28,9 @@ edit            # Open the notes file in editor
 # CLI Usage
 
 `lisq [command] [argument]`
+
 `lisq :: sample text`
+
 `alias lisq="python3 /file/path/lisq.py"`
 
 
