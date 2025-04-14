@@ -1,0 +1,3 @@
+[submodule "3_lisq/lisq"]
+	path = 3_lisq/lisq
+	url = git@github.com:funnut/lisq.git
