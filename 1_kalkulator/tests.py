@@ -14,6 +14,6 @@ result = 1  # Inicjalizacja zmiennej
 numbers = [2, 3, 4, 5]
 
 for num in numbers:
-    result *= num  # To samo co: result = result * num
+    result *= num  # result = result * num
 
 print(result)  # Wynik: 120
