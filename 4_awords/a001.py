@@ -27,3 +27,4 @@ print (new)
 print (len(new))
 for i in new:
       print (len(i), end=', ')
+print ('')
