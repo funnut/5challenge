@@ -28,3 +28,8 @@ print (len(new))
 for i in new:
       print (len(i), end=', ')
 print ('')
+
+txt2 = 's1'
+
+new2 = txt2.split()
+print (new2)
