@@ -73,7 +73,8 @@ while True:
                 if odleglosc:
                     print(komentator(odleglosc))
                 else:
-                    print(f"Strzał w dziesiątkę!\n\nChodziło o liczbę {losowa}! 👑")
+                    print(f"Strzał w dziesiątkę!\n")
+                    print(f"Chodziło o liczbę {losowa}! 👑")
                     print(f"Ilość prób: {N}")
                     print(f"Średnia odległość: {D}")
                     print(f"Celność: {celnosc:.2f}%")
