@@ -17,21 +17,6 @@
 from random import randrange
 import readline
 import math
-import os
-
-
-def wczytaj_najlepsza_celnosc():
-    if os.path.exists('/data/data/com.termux/files/home/kod/5challenge/2_zgadnijgra/najlepsza_celnosc.txt'):
-        with open('/data/data/com.termux/files/home/kod/5challenge/2_zgadnijgra/najlepsza_celnosc.txt', 'r') as f:
-            try:
-                return float(f.read().strip())  # Odczytuje celność jako float
-            except ValueError:
-                return 0  # Jeśli plik jest pusty lub niepoprawny, zwróć 0
-    return 0  # Jeśli plik nie istnieje, zwróć 0
-
-def zapisz_najlepsza_celnosc(celnosc):
-    with open('/data/data/com.termux/files/home/kod/5challenge/2_zgadnijgra/najlepsza_celnosc.txt', 'w') as f:
-        f.write(str(celnosc))
 
 print("\nPodaj nazwę gracza: ")
 username = input().strip()  # strip usuwa spacje
@@ -72,8 +57,6 @@ def oblicz_celnosc(D, N, k=0.1):
     return 100 * (1 / (1 + D)) * (1 - math.exp(-k / N))
 
 
-najlepsza_celnosc = wczytaj_najlepsza_celnosc()
-
 while True:
     try:
         losowa = randrange(1, 100)
@@ -94,11 +77,6 @@ while True:
                     print(f"Ilość prób: {N}")
                     print(f"Średnia odległość: {D}")
                     print(f"Celność: {celnosc:.2f}%")
-                    print(f"\nNajlepsza celność z poprzednich gier: {najlepsza_celnosc:.2f}%")
-                    if celnosc < 100 and celnosc > najlepsza_celnosc:
-                        najlepsza_celnosc = celnosc
-                        zapisz_najlepsza_celnosc(najlepsza_celnosc)  # Zapisanie najlepszej celności do pliku
-                        print ("\n🎉 Nowa najlepsza celność!")
                     break
             except ValueError:
                 print("Szukamy liczby całkowitej!")
